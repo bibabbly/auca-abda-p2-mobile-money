@@ -1,0 +1,5 @@
+In the load test, going from 1 to 4 clients made throughput grow almost four times. From 4 to 8 it grew a little more, but from 8 to 16 it stopped growing and even dropped slightly, while the p95 waiting time doubled. Throughput is how much work the whole system finishes per second; latency is how long one analyst waits. At 16 clients PostgreSQL still answered about 116 Q4 requests per second, but an unlucky analyst waited almost half a second instead of 0.14 s.
+
+The laptop has 4 cores and 8 threads, and the database and the client programs share them. At 8 clients average CPU was already about 97%, so 8 more clients added no power; they only joined the queue. It is like a bank with 8 tellers: with 16 customers it serves the same number per hour, but everyone waits longer. Neo4j handled 12 to 30 times more requests than PostgreSQL, but both hit the same CPU wall.
+
+To test this, I would run the clients on a second computer. If the database CPU then stayed well below 100% but throughput still stopped at 8 clients, my explanation would be wrong.

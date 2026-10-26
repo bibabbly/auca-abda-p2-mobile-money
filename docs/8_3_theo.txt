@@ -1,0 +1,5 @@
+At first I thought PostgreSQL was bad at path-finding and that the graph database was the clear winner, because our first Q7 SQL query for bound 6 ran for more than 60 seconds and timed out. I now think the query design mattered more than the database. The bidirectional SQL used the same data but answered in about 80 ms, roughly 700 times faster. Neo4j was still faster at about 10 ms, but the gap became milliseconds, not minutes.
+
+The plan explains why. The plain recursive query revisited the same accounts at every depth and did not stop after reaching the destination, so it read 14.6 million transfer rows. It behaves like a recursive Java method with no visited HashSet and no return when the answer is found. The bidirectional query searches from both accounts and meets in the middle, while Neo4j's shortest-path search never revisits an account and stops at the first hit, using only 18,794 database hits.
+
+I would test this on a very busy account with thousands of transfers. If bidirectional SQL slowed down badly there while Neo4j stayed fast, I would accept that the graph model has a real advantage on highly connected data.

@@ -6,8 +6,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.253,
-    "neo_seconds": 2.049,
+    "pg_seconds": 0.209,
+    "neo_seconds": 6.027,
     "postgres": [
       [
         1,
@@ -28,8 +28,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.003,
-    "neo_seconds": 0.005,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.068,
     "postgres": [
       [
         1,
@@ -50,8 +50,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.049,
     "postgres": [
       [
         1,
@@ -72,8 +72,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.055,
     "postgres": [
       [
         1,
@@ -94,8 +94,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.051,
     "postgres": [
       [
         1,
@@ -117,7 +117,7 @@
     "neo4j_rows": 1,
     "status": "MATCH",
     "pg_seconds": 0.001,
-    "neo_seconds": 0.004,
+    "neo_seconds": 0.051,
     "postgres": [
       [
         1,
@@ -138,8 +138,8 @@
     "postgres_rows": 30,
     "neo4j_rows": 30,
     "status": "MATCH",
-    "pg_seconds": 12.803,
-    "neo_seconds": 39.218,
+    "pg_seconds": 4.821,
+    "neo_seconds": 21.245,
     "postgres": [
       [
         "2026-09-01",
@@ -452,8 +452,8 @@
     "postgres_rows": 4,
     "neo4j_rows": 4,
     "status": "MATCH",
-    "pg_seconds": 0.006,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.037,
+    "neo_seconds": 0.404,
     "postgres": [
       [
         8917,
@@ -523,7 +523,7 @@
     "neo4j_rows": 9,
     "status": "MATCH",
     "pg_seconds": 0.001,
-    "neo_seconds": 0.003,
+    "neo_seconds": 0.014,
     "postgres": [
       [
         147226,
@@ -663,7 +663,7 @@
     "neo4j_rows": 9,
     "status": "MATCH",
     "pg_seconds": 0.002,
-    "neo_seconds": 0.003,
+    "neo_seconds": 0.013,
     "postgres": [
       [
         6573,
@@ -803,7 +803,7 @@
     "neo4j_rows": 4,
     "status": "MATCH",
     "pg_seconds": 0.001,
-    "neo_seconds": 0.002,
+    "neo_seconds": 0.011,
     "postgres": [
       [
         5917,
@@ -872,8 +872,8 @@
     "postgres_rows": 9,
     "neo4j_rows": 9,
     "status": "MATCH",
-    "pg_seconds": 0.001,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.002,
+    "neo_seconds": 0.012,
     "postgres": [
       [
         144226,
@@ -1013,7 +1013,7 @@
     "neo4j_rows": 9,
     "status": "MATCH",
     "pg_seconds": 0.001,
-    "neo_seconds": 0.002,
+    "neo_seconds": 0.013,
     "postgres": [
       [
         3573,
@@ -1152,8 +1152,8 @@
     "postgres_rows": 2,
     "neo4j_rows": 2,
     "status": "MATCH",
-    "pg_seconds": 0.005,
-    "neo_seconds": 0.002,
+    "pg_seconds": 0.046,
+    "neo_seconds": 0.338,
     "postgres": [
       [
         "Kigali",
@@ -1182,8 +1182,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.003,
-    "neo_seconds": 0.005,
+    "pg_seconds": 0.004,
+    "neo_seconds": 0.23,
     "postgres": [
       [
         "Eastern",
@@ -1237,7 +1237,7 @@
     "neo4j_rows": 5,
     "status": "MATCH",
     "pg_seconds": 0.005,
-    "neo_seconds": 0.003,
+    "neo_seconds": 0.196,
     "postgres": [
       [
         "Eastern",
@@ -1290,8 +1290,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.008,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.007,
+    "neo_seconds": 0.2,
     "postgres": [
       [
         "Eastern",
@@ -1344,8 +1344,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.004,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.007,
+    "neo_seconds": 0.036,
     "postgres": [
       [
         "Eastern",
@@ -1398,8 +1398,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.005,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.004,
+    "neo_seconds": 0.015,
     "postgres": [
       [
         "Eastern",
@@ -1452,8 +1452,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.007,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.008,
+    "neo_seconds": 0.027,
     "postgres": [
       [
         "Eastern",
@@ -1506,8 +1506,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.018,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.012,
+    "neo_seconds": 0.056,
     "postgres": [
       [
         "Eastern",
@@ -1561,7 +1561,7 @@
     "neo4j_rows": 5,
     "status": "MATCH",
     "pg_seconds": 0.006,
-    "neo_seconds": 0.004,
+    "neo_seconds": 0.102,
     "postgres": [
       [
         "Eastern",
@@ -1614,8 +1614,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.015,
-    "neo_seconds": 0.006,
+    "pg_seconds": 0.012,
+    "neo_seconds": 0.044,
     "postgres": [
       [
         "Eastern",
@@ -1668,8 +1668,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.045,
-    "neo_seconds": 0.01,
+    "pg_seconds": 0.023,
+    "neo_seconds": 0.174,
     "postgres": [
       [
         "Eastern",
@@ -1722,8 +1722,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.139,
-    "neo_seconds": 0.014,
+    "pg_seconds": 0.045,
+    "neo_seconds": 0.079,
     "postgres": [
       [
         "Eastern",
@@ -1776,8 +1776,8 @@
     "postgres_rows": 3,
     "neo4j_rows": 3,
     "status": "MATCH",
-    "pg_seconds": 0.006,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.002,
+    "neo_seconds": 0.009,
     "postgres": [
       [
         "Eastern",
@@ -1814,8 +1814,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.008,
-    "neo_seconds": 0.005,
+    "pg_seconds": 0.004,
+    "neo_seconds": 0.029,
     "postgres": [
       [
         "Eastern",
@@ -1868,8 +1868,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.008,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.006,
+    "neo_seconds": 0.01,
     "postgres": [
       [
         "Eastern",
@@ -1922,8 +1922,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.022,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.006,
+    "neo_seconds": 0.016,
     "postgres": [
       [
         "Eastern",
@@ -1977,7 +1977,7 @@
     "neo4j_rows": 5,
     "status": "MATCH",
     "pg_seconds": 0.002,
-    "neo_seconds": 0.003,
+    "neo_seconds": 0.012,
     "postgres": [
       [
         "Eastern",
@@ -2030,8 +2030,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.003,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.002,
+    "neo_seconds": 0.008,
     "postgres": [
       [
         "Eastern",
@@ -2084,8 +2084,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.007,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.005,
+    "neo_seconds": 0.015,
     "postgres": [
       [
         "Eastern",
@@ -2138,8 +2138,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.031,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.014,
+    "neo_seconds": 0.013,
     "postgres": [
       [
         "Eastern",
@@ -2193,7 +2193,7 @@
     "neo4j_rows": 5,
     "status": "MATCH",
     "pg_seconds": 0.003,
-    "neo_seconds": 0.004,
+    "neo_seconds": 0.008,
     "postgres": [
       [
         "Eastern",
@@ -2246,8 +2246,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.023,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.006,
+    "neo_seconds": 0.009,
     "postgres": [
       [
         "Eastern",
@@ -2300,8 +2300,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.026,
-    "neo_seconds": 0.006,
+    "pg_seconds": 0.017,
+    "neo_seconds": 0.027,
     "postgres": [
       [
         "Eastern",
@@ -2354,8 +2354,8 @@
     "postgres_rows": 5,
     "neo4j_rows": 5,
     "status": "MATCH",
-    "pg_seconds": 0.06,
-    "neo_seconds": 0.009,
+    "pg_seconds": 0.057,
+    "neo_seconds": 0.027,
     "postgres": [
       [
         "Eastern",
@@ -2408,8 +2408,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.004,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.003,
+    "neo_seconds": 0.43,
     "postgres": [
       [
         20000001,
@@ -2434,8 +2434,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.003,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.002,
+    "neo_seconds": 0.011,
     "postgres": [
       [
         20000092,
@@ -2460,8 +2460,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.029,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.009,
     "postgres": [
       [
         20000229,
@@ -2486,8 +2486,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.002,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.013,
     "postgres": [],
     "neo4j": []
   },
@@ -2498,8 +2498,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.003,
-    "neo_seconds": 0.002,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.005,
     "postgres": [],
     "neo4j": []
   },
@@ -2510,8 +2510,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.002,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.007,
     "postgres": [],
     "neo4j": []
   },
@@ -2522,8 +2522,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.031,
+    "neo_seconds": 0.635,
     "postgres": [
       [
         [
@@ -2554,8 +2554,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.005,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.01,
     "postgres": [],
     "neo4j": []
   },
@@ -2566,8 +2566,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.004,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.01,
     "postgres": [
       [
         [
@@ -2603,7 +2603,7 @@
     "neo4j_rows": 0,
     "status": "MATCH",
     "pg_seconds": 0.001,
-    "neo_seconds": 0.002,
+    "neo_seconds": 0.007,
     "postgres": [],
     "neo4j": []
   },
@@ -2614,8 +2614,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.001,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.002,
+    "neo_seconds": 0.009,
     "postgres": [],
     "neo4j": []
   },
@@ -2626,8 +2626,8 @@
     "postgres_rows": 0,
     "neo4j_rows": 0,
     "status": "MATCH",
-    "pg_seconds": 0.002,
-    "neo_seconds": 0.002,
+    "pg_seconds": 0.001,
+    "neo_seconds": 0.008,
     "postgres": [],
     "neo4j": []
   },
@@ -2638,8 +2638,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 1.434,
-    "neo_seconds": 0.003,
+    "pg_seconds": 1.363,
+    "neo_seconds": 0.414,
     "postgres": [
       [
         3
@@ -2682,8 +2682,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 115.607,
-    "neo_seconds": 0.005,
+    "pg_seconds": 83.195,
+    "neo_seconds": 0.17,
     "postgres": [
       [
         3
@@ -2726,8 +2726,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 1.144,
-    "neo_seconds": 0.02,
+    "pg_seconds": 0.541,
+    "neo_seconds": 0.082,
     "postgres": [
       [
         null
@@ -2749,8 +2749,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 97.8,
-    "neo_seconds": 0.023,
+    "pg_seconds": 43.249,
+    "neo_seconds": 0.052,
     "postgres": [
       [
         5
@@ -2797,8 +2797,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 0.973,
-    "neo_seconds": 0.01,
+    "pg_seconds": 0.419,
+    "neo_seconds": 0.163,
     "postgres": [
       [
         null
@@ -2820,8 +2820,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 87.19,
-    "neo_seconds": 0.021,
+    "pg_seconds": 35.925,
+    "neo_seconds": 0.085,
     "postgres": [
       [
         5
@@ -2868,8 +2868,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 1.199,
-    "neo_seconds": 0.003,
+    "pg_seconds": 0.595,
+    "neo_seconds": 0.01,
     "postgres": [
       [
         3
@@ -2912,8 +2912,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 107.695,
-    "neo_seconds": 0.004,
+    "pg_seconds": 42.162,
+    "neo_seconds": 0.008,
     "postgres": [
       [
         3
@@ -2956,8 +2956,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 1.203,
-    "neo_seconds": 0.022,
+    "pg_seconds": 0.474,
+    "neo_seconds": 0.073,
     "postgres": [
       [
         null
@@ -2979,8 +2979,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 108.491,
-    "neo_seconds": 0.023,
+    "pg_seconds": 43.988,
+    "neo_seconds": 0.104,
     "postgres": [
       [
         5
@@ -3027,8 +3027,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 1.581,
-    "neo_seconds": 0.015,
+    "pg_seconds": 0.467,
+    "neo_seconds": 0.023,
     "postgres": [
       [
         null
@@ -3050,8 +3050,8 @@
     "postgres_rows": 1,
     "neo4j_rows": 1,
     "status": "LENGTH MATCH",
-    "pg_seconds": 107.385,
-    "neo_seconds": 0.054,
+    "pg_seconds": 44.586,
+    "neo_seconds": 0.105,
     "postgres": [
       [
         5

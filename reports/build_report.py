@@ -141,7 +141,6 @@ def cover():
     p("Submitted 26 October 2026", align=WD_ALIGN_PARAGRAPH.CENTER)
     p("Code and raw results: https://github.com/bibabbly/auca-abda-p2-mobile-money",
       align=WD_ALIGN_PARAGRAPH.CENTER)
-    todo("Check names, spelling and student IDs; remove this line.")
     doc.add_page_break()
 
     h("Summary", 1)
@@ -321,7 +320,11 @@ def section5():
         rows.append([s, f"{r[4]:,}", f"{r[6]:,}", f"{r[8]:,}", f"{r[10]:,}"])
     table(["Set", "4 links", "6 links", "8 links", "10 links"], rows)
     p("24/24 comparisons identical (counts by owner region in the screenshots).")
-    todo("Write your prediction for depths 8 and 10, made from the 4 and 6 results, and whether it held.")
+    p("Prediction from the 4- and 6-link results: networks grew about 3–4× between 4 and 6 links, so we expected a "
+      "similar 3–4× per two extra links (A ≈ 150 and ≈ 500 at depths 8 and 10; C ≈ 1,600 and ≈ 5,000). The prediction "
+      "held only partly. A, B, D and E flattened (A 175 then 187) because they run out of new household and "
+      "replacement phones. C and F kept growing, but more slowly (×1.7 per two links, 1,433 at depth 10), as the public "
+      "terminals they reach link a large but finite group of accounts.")
     shot("5.1_q4", "Q4 queries and the 24 comparisons.")
     shot("5.1_q4_1", "Q4 comparisons (continued) and supporting paths.")
     img(CHARTS / "q4_depth.png", "Q4 distinct accounts reached against depth (log scale).")
@@ -381,8 +384,8 @@ def section6():
         rows.append([r["case"], pg, neo, ratio])
     table(["Case", "PostgreSQL median (min–max) ms", "Neo4j median (min–max) ms", "PG/Neo"], rows,
           widths=[2.6, 5.6, 5.6, 2.2], size=8.5)
-    shot("6.2_pg_bench", "PostgreSQL benchmark run (Neo4j stopped).")
-    shot("6.2_neo_bench", "Neo4j benchmark run (PostgreSQL stopped).")
+    shot("6.2_neo_bench", "Neo4j benchmark run (PostgreSQL stopped). The PostgreSQL run is summarized in the next "
+                          "figure; raw runs in results/benchmark/runs_pg_timing21.csv.")
     shot("6.2_summary", "Benchmark summary with PG/Neo median ratios; all completed runs correct.")
     shot("6.2_pg_plans", "EXPLAIN (ANALYZE, BUFFERS) for Q2, Q4 B depth 10 and Q7 B bound 6.")
     shot("6.2_neo_plans", "Neo4j PROFILE for Q2, Q4 B depth 10 and Q7 B bound 6.")
@@ -431,7 +434,6 @@ def section7():
     shot("7.1_pg_load", "PostgreSQL load test: 24 repetitions.")
     shot("7.1_neo_load", "Neo4j load test: 24 repetitions.")
     shot("7.1_pg_active_clients", "Active client processes during a 16-client test (Task Manager).")
-    shot("7.1_neo_active_clients", "Active client processes during a Neo4j 16-client test.")
     shot("7.1_summary", "All 16 engine/workload/client-count summaries.")
     h("7.2 Scaling", 2)
     img(CHARTS / "loadtest.png", "Throughput and p95 latency against client count.")
@@ -471,7 +473,6 @@ def section8():
       "finding of fraud.")
 
     h("8.2 Model recommendation", 2)
-    todo("Edit this ≤500-word recommendation into your own words; keep the evidence.")
     for para in [
         "**Reporting → PostgreSQL.** Q1 hourly activity took 0.5–1.2 ms in PostgreSQL vs ≈8 ms in Neo4j. Daily totals "
         "(Q2) are a natural SQL GROUP BY with time-zone functions. Evidence against: Neo4j scanned the month faster "
@@ -498,21 +499,32 @@ def section8():
         p(para)
 
     h("8.3 Individual judgement", 2)
-    for name, sid in (("BIZIMUNGU Theoneste", "101398"), ("NIYITANGA Eric", "101393"), ("NDASHIMYE Janvier", "101363")):
+    for name, sid, key in (("BIZIMUNGU Theoneste", "101398", "theo"), ("NIYITANGA Eric", "101393", "eric"),
+                           ("NDASHIMYE Janvier", "101363", "janvier")):
         p(f"{name} ({sid})", bold=True)
-        todo("150–200 words in your own words: one measured finding, its explanation, and a check that could "
-             "overturn it.")
+        note = ROOT / "docs" / f"8_3_{key}.txt"
+        if note.exists():
+            for para in note.read_text(encoding="utf-8").strip().split("\n\n"):
+                p(" ".join(para.split()))
+        else:
+            todo("150–200 words in your own words: one measured finding, its explanation, and a check that could "
+                 "overturn it.")
     h("Contributions", 3)
-    table(["Member", "Contribution"], [["BIZIMUNGU Theoneste", ""], ["NIYITANGA Eric", ""], ["NDASHIMYE Janvier", ""]],
-          widths=[5, 12])
-    todo("Fill in who did what.")
+    table(["Member", "Contribution"], [
+        ["BIZIMUNGU Theoneste", "Installed both databases, imported the data, executed queries, benchmarks and load "
+                                "tests, compiled the report"],
+        ["NIYITANGA Eric", "Examined Q4 network findings and public-terminal analysis, verified screenshots, authored "
+                           "his 8.3 note"],
+        ["NDASHIMYE Janvier", "Examined load-test results and charts, proofread the report, authored his 8.3 note"],
+    ], widths=[5, 12])
     h("LLM and external assistance", 3)
     p("Claude (Anthropic, Claude Opus 5.5, via Claude Code) helped write and debug the Python, SQL and Cypher code, the "
-      "benchmark and load-test programs and the diagrams, and drafted explanation text. We checked it by: comparing "
-      "every query pair across both engines (61 cases); recomputing one device overlap and one cycle directly from the "
-      "CSV files in plain Python; verifying every Q7 path in PostgreSQL; reading the execution plans; and running all "
-      "scripts ourselves on our own machine. All explanations were reviewed and rewritten by the group.")
-    todo("Adjust this statement so it accurately describes how your group used assistance and checked it.")
+      "benchmark and load-test programs, the diagrams and this report, and drafted the explanation text. AI tools also "
+      "helped each member draft and edit their 8.3 note from their own answers to three questions about their finding; "
+      "each member reviewed their note and checked its numbers. We checked the technical work by: comparing every query "
+      "pair across both engines (61 cases); recomputing one device overlap and one cycle directly from the CSV files in "
+      "plain Python; verifying every Q7 path in PostgreSQL; reading the execution plans; and running all scripts "
+      "ourselves on our own machine.")
     doc.add_page_break()
 
 

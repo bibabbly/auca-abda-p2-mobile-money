@@ -1,0 +1,5 @@
+In Q4, sets A, B, D and E grow for a while and then flatten at around 190 to 230 accounts within 10 links, while C and F keep climbing to about 1,430. By 10 steps most of the accounts reached are strangers: account 998 reaches 101752 only through a chain of shared phones. For an investigator, a link within 10 steps does not mean two people are related. Short links can be trusted more; long ones need checking.
+
+The cause is the device type. Within 4 links, C and F reach a public terminal (devices 220020 and 220170) that many unrelated customers use. Once the search touches it, it jumps to every account that used the terminal, then to their phones, so the number grows fast. It is like a public phone booth: a family phone links a few relatives, but a phone booth links half the town. A, B, D and E only meet household and replacement phones, so their networks stay small.
+
+To test this, I would remove the public terminals and run Q4 again for C and F. If they still grew much faster than the others, my explanation would be wrong.
