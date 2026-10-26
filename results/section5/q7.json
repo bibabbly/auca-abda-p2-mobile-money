@@ -1,0 +1,294 @@
+[
+  {
+    "set": "A",
+    "account": 998,
+    "destination": 24755,
+    "bound": 4,
+    "postgres": 3,
+    "neo4j": 3,
+    "match": true,
+    "path": {
+      "accounts": [
+        998,
+        8917,
+        16836,
+        24755
+      ],
+      "transfer_ids": [
+        20000001,
+        20000002,
+        20000003
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "A",
+    "account": 998,
+    "destination": 24755,
+    "bound": 6,
+    "postgres": 3,
+    "neo4j": 3,
+    "match": true,
+    "path": {
+      "accounts": [
+        998,
+        8917,
+        16836,
+        24755
+      ],
+      "transfer_ids": [
+        20000001,
+        20000002,
+        20000003
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "destination": 186823,
+    "bound": 4,
+    "postgres": null,
+    "neo4j": null,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "destination": 186823,
+    "bound": 6,
+    "postgres": 5,
+    "neo4j": 5,
+    "match": true,
+    "path": {
+      "accounts": [
+        147228,
+        147906,
+        147310,
+        148101,
+        178904,
+        186823
+      ],
+      "transfer_ids": [
+        11540891,
+        15207140,
+        18927851,
+        16500879,
+        20000096
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "destination": 6573,
+    "bound": 4,
+    "postgres": null,
+    "neo4j": null,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "destination": 6573,
+    "bound": 6,
+    "postgres": 5,
+    "neo4j": 5,
+    "match": true,
+    "path": {
+      "accounts": [
+        206978,
+        214897,
+        222816,
+        230735,
+        238654,
+        6573
+      ],
+      "transfer_ids": [
+        20000229,
+        20000230,
+        20000231,
+        20000232,
+        20000233
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "destination": 21755,
+    "bound": 4,
+    "postgres": 3,
+    "neo4j": 3,
+    "match": true,
+    "path": {
+      "accounts": [
+        237998,
+        5917,
+        13836,
+        21755
+      ],
+      "transfer_ids": [
+        20001651,
+        20001652,
+        20001653
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "destination": 21755,
+    "bound": 6,
+    "postgres": 3,
+    "neo4j": 3,
+    "match": true,
+    "path": {
+      "accounts": [
+        237998,
+        5917,
+        13836,
+        21755
+      ],
+      "transfer_ids": [
+        20001651,
+        20001652,
+        20001653
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "destination": 183823,
+    "bound": 4,
+    "postgres": null,
+    "neo4j": null,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "destination": 183823,
+    "bound": 6,
+    "postgres": 5,
+    "neo4j": 5,
+    "match": true,
+    "path": {
+      "accounts": [
+        144228,
+        152147,
+        160066,
+        167985,
+        175904,
+        183823
+      ],
+      "transfer_ids": [
+        20001742,
+        20001743,
+        20001744,
+        20001745,
+        20001746
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "destination": 3573,
+    "bound": 4,
+    "postgres": null,
+    "neo4j": null,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "destination": 3573,
+    "bound": 6,
+    "postgres": 5,
+    "neo4j": 5,
+    "match": true,
+    "path": {
+      "accounts": [
+        203978,
+        211897,
+        219816,
+        227735,
+        235654,
+        3573
+      ],
+      "transfer_ids": [
+        20001879,
+        20001880,
+        20001881,
+        20001882,
+        20001883
+      ],
+      "checks": {
+        "starts at review account": true,
+        "ends at destination": true,
+        "length equals shortest": true,
+        "every transfer exists": true,
+        "direction sender->receiver": true,
+        "all accounts person": true
+      }
+    }
+  }
+]

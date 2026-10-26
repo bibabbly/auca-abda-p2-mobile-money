@@ -1,0 +1,90 @@
+2026-10-25 13:43:13 dataset_info():
+{'period': '1 to 30 September 2026 CAT',
+ 'currency': 'RWF',
+ 'expected_counts': {'customers': 228000,
+                     'accounts': 248000,
+                     'devices': 228600,
+                     'account_devices': 285600,
+                     'transfers': 20003300},
+ 'fields': {'customers': ('customer_id', 'region'),
+            'accounts': ('account_id', 'customer_id', 'role'),
+            'devices': ('device_id', 'access_type'),
+            'account_devices': ('account_id',
+                                'device_id',
+                                'first_day',
+                                'last_day',
+                                'observations'),
+            'transfers': ('transfer_id',
+                          'sender_id',
+                          'receiver_id',
+                          'occurred_at',
+                          'amount_rwf')}}
+2026-10-25 13:43:13 FIELDS:
+{'customers': ('customer_id', 'region'),
+ 'accounts': ('account_id', 'customer_id', 'role'),
+ 'devices': ('device_id', 'access_type'),
+ 'account_devices': ('account_id',
+                     'device_id',
+                     'first_day',
+                     'last_day',
+                     'observations'),
+ 'transfers': ('transfer_id',
+               'sender_id',
+               'receiver_id',
+               'occurred_at',
+               'amount_rwf')}
+2026-10-25 13:43:13 --- iter_customers() first 10 records
+2026-10-25 13:43:13 {'customer_id': 1, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 2, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 3, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 4, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 5, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 6, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 7, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 8, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 9, 'region': 'Kigali'}
+2026-10-25 13:43:13 {'customer_id': 10, 'region': 'Kigali'}
+2026-10-25 13:43:13 --- iter_accounts() first 10 records
+2026-10-25 13:43:13 {'account_id': 1, 'customer_id': 1, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 2, 'customer_id': 2, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 3, 'customer_id': 3, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 4, 'customer_id': 4, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 5, 'customer_id': 5, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 6, 'customer_id': 6, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 7, 'customer_id': 7, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 8, 'customer_id': 8, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 9, 'customer_id': 9, 'role': 'person'}
+2026-10-25 13:43:13 {'account_id': 10, 'customer_id': 10, 'role': 'person'}
+2026-10-25 13:43:13 --- iter_devices() first 10 records
+2026-10-25 13:43:13 {'device_id': 1, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 2, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 3, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 4, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 5, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 6, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 7, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 8, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 9, 'access_type': 'handset'}
+2026-10-25 13:43:13 {'device_id': 10, 'access_type': 'handset'}
+2026-10-25 13:43:13 --- iter_account_devices() first 10 records
+2026-10-25 13:43:13 {'account_id': 1, 'device_id': 1, 'first_day': 0, 'last_day': 29, 'observations': 11}
+2026-10-25 13:43:13 {'account_id': 2, 'device_id': 1, 'first_day': 0, 'last_day': 29, 'observations': 12}
+2026-10-25 13:43:13 {'account_id': 3, 'device_id': 1, 'first_day': 0, 'last_day': 29, 'observations': 13}
+2026-10-25 13:43:13 {'account_id': 4, 'device_id': 1, 'first_day': 0, 'last_day': 29, 'observations': 14}
+2026-10-25 13:43:13 {'account_id': 5, 'device_id': 1, 'first_day': 0, 'last_day': 29, 'observations': 15}
+2026-10-25 13:43:13 {'account_id': 6, 'device_id': 6, 'first_day': 0, 'last_day': 29, 'observations': 16}
+2026-10-25 13:43:13 {'account_id': 7, 'device_id': 7, 'first_day': 0, 'last_day': 29, 'observations': 17}
+2026-10-25 13:43:13 {'account_id': 8, 'device_id': 8, 'first_day': 11, 'last_day': 29, 'observations': 18}
+2026-10-25 13:43:13 {'account_id': 8, 'device_id': 221105, 'first_day': 0, 'last_day': 10, 'observations': 10}
+2026-10-25 13:43:13 {'account_id': 9, 'device_id': 9, 'first_day': 0, 'last_day': 29, 'observations': 19}
+2026-10-25 13:43:13 --- iter_transfers() first 10 records
+2026-10-25 13:43:13 {'transfer_id': 1, 'sender_id': 188503, 'receiver_id': 187907, 'occurred_at': 1788235200, 'amount_rwf': 6700}
+2026-10-25 13:43:13 {'transfer_id': 2, 'sender_id': 151724, 'receiver_id': 152176, 'occurred_at': 1788235200, 'amount_rwf': 6700}
+2026-10-25 13:43:13 {'transfer_id': 3, 'sender_id': 199087, 'receiver_id': 199200, 'occurred_at': 1788235200, 'amount_rwf': 6800}
+2026-10-25 13:43:13 {'transfer_id': 4, 'sender_id': 139778, 'receiver_id': 140682, 'occurred_at': 1788235200, 'amount_rwf': 6300}
+2026-10-25 13:43:13 {'transfer_id': 5, 'sender_id': 189061, 'receiver_id': 189287, 'occurred_at': 1788235200, 'amount_rwf': 2600}
+2026-10-25 13:43:13 {'transfer_id': 6, 'sender_id': 85014, 'receiver_id': 246711, 'occurred_at': 1788235200, 'amount_rwf': 30600}
+2026-10-25 13:43:13 {'transfer_id': 7, 'sender_id': 225854, 'receiver_id': 225258, 'occurred_at': 1788235200, 'amount_rwf': 3800}
+2026-10-25 13:43:13 {'transfer_id': 8, 'sender_id': 69746, 'receiver_id': 240010, 'occurred_at': 1788235200, 'amount_rwf': 16700}
+2026-10-25 13:43:13 {'transfer_id': 9, 'sender_id': 7642, 'receiver_id': 240005, 'occurred_at': 1788235200, 'amount_rwf': 900}
+2026-10-25 13:43:13 {'transfer_id': 10, 'sender_id': 32477, 'receiver_id': 246273, 'occurred_at': 1788235200, 'amount_rwf': 3900}

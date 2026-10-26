@@ -1,0 +1,261 @@
+{
+  "counts": {
+    "customers": {
+      "postgres": 228000,
+      "capture": 228000,
+      "match": true
+    },
+    "accounts": {
+      "postgres": 248000,
+      "capture": 248000,
+      "match": true
+    },
+    "devices": {
+      "postgres": 228600,
+      "capture": 228600,
+      "match": true
+    },
+    "account_devices": {
+      "postgres": 285600,
+      "capture": 285600,
+      "match": true
+    },
+    "transfers": {
+      "postgres": 20003300,
+      "capture": 20003300,
+      "match": true
+    }
+  },
+  "audit": {
+    "count": {
+      "postgres": 20003300,
+      "capture": 20003300,
+      "match": true
+    },
+    "earliest occurred_at": {
+      "postgres": 1788235200,
+      "capture": 1788235200,
+      "match": true
+    },
+    "latest occurred_at": {
+      "postgres": 1790798399,
+      "capture": 1790798399,
+      "match": true
+    },
+    "sum amount_rwf": {
+      "postgres": 231482327870,
+      "capture": 231482327870,
+      "match": true
+    }
+  },
+  "roles": {
+    "person": {
+      "accounts": 240000,
+      "expected": 240000,
+      "match": true
+    },
+    "merchant": {
+      "accounts": 6000,
+      "expected": 6000,
+      "match": true
+    },
+    "agent": {
+      "accounts": 2000,
+      "expected": 2000,
+      "match": true
+    }
+  },
+  "constraints": [
+    {
+      "table": "account_devices",
+      "name": "account_devices_day_range",
+      "type": "CHECK",
+      "validated": true,
+      "definition": "CHECK (((0 <= first_day) AND (first_day <= last_day) AND (last_day <= 29)))"
+    },
+    {
+      "table": "account_devices",
+      "name": "account_devices_observations_positive",
+      "type": "CHECK",
+      "validated": true,
+      "definition": "CHECK ((observations > 0))"
+    },
+    {
+      "table": "account_devices",
+      "name": "account_devices_account_fk",
+      "type": "FOREIGN KEY",
+      "validated": true,
+      "definition": "FOREIGN KEY (account_id) REFERENCES accounts(account_id)"
+    },
+    {
+      "table": "account_devices",
+      "name": "account_devices_device_fk",
+      "type": "FOREIGN KEY",
+      "validated": true,
+      "definition": "FOREIGN KEY (device_id) REFERENCES devices(device_id)"
+    },
+    {
+      "table": "account_devices",
+      "name": "account_devices_pk",
+      "type": "PRIMARY KEY",
+      "validated": true,
+      "definition": "PRIMARY KEY (account_id, device_id)"
+    },
+    {
+      "table": "accounts",
+      "name": "accounts_customer_fk",
+      "type": "FOREIGN KEY",
+      "validated": true,
+      "definition": "FOREIGN KEY (customer_id) REFERENCES customers(customer_id)"
+    },
+    {
+      "table": "accounts",
+      "name": "accounts_pk",
+      "type": "PRIMARY KEY",
+      "validated": true,
+      "definition": "PRIMARY KEY (account_id)"
+    },
+    {
+      "table": "customers",
+      "name": "customers_pk",
+      "type": "PRIMARY KEY",
+      "validated": true,
+      "definition": "PRIMARY KEY (customer_id)"
+    },
+    {
+      "table": "devices",
+      "name": "devices_pk",
+      "type": "PRIMARY KEY",
+      "validated": true,
+      "definition": "PRIMARY KEY (device_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_amount_positive",
+      "type": "CHECK",
+      "validated": true,
+      "definition": "CHECK ((amount_rwf > 0))"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_receiver_fk",
+      "type": "FOREIGN KEY",
+      "validated": true,
+      "definition": "FOREIGN KEY (receiver_id) REFERENCES accounts(account_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_sender_fk",
+      "type": "FOREIGN KEY",
+      "validated": true,
+      "definition": "FOREIGN KEY (sender_id) REFERENCES accounts(account_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_pk",
+      "type": "PRIMARY KEY",
+      "validated": true,
+      "definition": "PRIMARY KEY (transfer_id)"
+    }
+  ],
+  "indexes": [
+    {
+      "table": "account_devices",
+      "name": "account_devices_device_idx",
+      "bytes": 6438912,
+      "definition": "CREATE INDEX account_devices_device_idx ON public.account_devices USING btree (device_id, account_id)"
+    },
+    {
+      "table": "account_devices",
+      "name": "account_devices_pk",
+      "bytes": 6438912,
+      "definition": "CREATE UNIQUE INDEX account_devices_pk ON public.account_devices USING btree (account_id, device_id)"
+    },
+    {
+      "table": "accounts",
+      "name": "accounts_customer_idx",
+      "bytes": 5595136,
+      "definition": "CREATE INDEX accounts_customer_idx ON public.accounts USING btree (customer_id, account_id)"
+    },
+    {
+      "table": "accounts",
+      "name": "accounts_pk",
+      "bytes": 5595136,
+      "definition": "CREATE UNIQUE INDEX accounts_pk ON public.accounts USING btree (account_id)"
+    },
+    {
+      "table": "customers",
+      "name": "customers_pk",
+      "bytes": 5144576,
+      "definition": "CREATE UNIQUE INDEX customers_pk ON public.customers USING btree (customer_id)"
+    },
+    {
+      "table": "devices",
+      "name": "devices_pk",
+      "bytes": 5160960,
+      "definition": "CREATE UNIQUE INDEX devices_pk ON public.devices USING btree (device_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_occurred_brin",
+      "bytes": 49152,
+      "definition": "CREATE INDEX transfers_occurred_brin ON public.transfers USING brin (occurred_at)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_pk",
+      "bytes": 449323008,
+      "definition": "CREATE UNIQUE INDEX transfers_pk ON public.transfers USING btree (transfer_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_receiver_time_idx",
+      "bytes": 992067584,
+      "definition": "CREATE INDEX transfers_receiver_time_idx ON public.transfers USING btree (receiver_id, occurred_at) INCLUDE (sender_id, amount_rwf, transfer_id)"
+    },
+    {
+      "table": "transfers",
+      "name": "transfers_sender_time_idx",
+      "bytes": 992043008,
+      "definition": "CREATE INDEX transfers_sender_time_idx ON public.transfers USING btree (sender_id, occurred_at) INCLUDE (receiver_id, amount_rwf, transfer_id)"
+    }
+  ],
+  "sizes": {
+    "customers": {
+      "data_bytes": 10264576,
+      "index_bytes": 5144576,
+      "total_bytes": 15409152
+    },
+    "accounts": {
+      "data_bytes": 11313152,
+      "index_bytes": 11190272,
+      "total_bytes": 22503424
+    },
+    "devices": {
+      "data_bytes": 10264576,
+      "index_bytes": 5160960,
+      "total_bytes": 15425536
+    },
+    "account_devices": {
+      "data_bytes": 12877824,
+      "index_bytes": 12877824,
+      "total_bytes": 25755648
+    },
+    "transfers": {
+      "data_bytes": 1205698560,
+      "index_bytes": 2433507328,
+      "total_bytes": 3639205888
+    },
+    "_tables_total": {
+      "data_bytes": 1250418688,
+      "index_bytes": 2467880960,
+      "total_bytes": 3718299648
+    },
+    "_database_bytes": 3726669503
+  },
+  "not_null_columns": {
+    "not_null": 17,
+    "total": 17
+  },
+  "all_ok": true
+}

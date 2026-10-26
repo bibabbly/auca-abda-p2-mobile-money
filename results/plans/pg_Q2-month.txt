@@ -1,0 +1,33 @@
+-- pg_Q2-month  params={}
+
+SELECT (to_timestamp(occurred_at) AT TIME ZONE 'Africa/Kigali')::date AS day,
+       COUNT(*) AS transfers, SUM(amount_rwf) AS total_rwf
+FROM transfers
+GROUP BY 1
+ORDER BY 1
+
+====================================================================================================
+Sort  (cost=531339.20..532323.92 rows=393887 width=20) (actual time=12031.403..12127.599 rows=30.00 loops=1)
+  Sort Key: (((to_timestamp((occurred_at)::double precision) AT TIME ZONE 'Africa/Kigali'::text))::date)
+  Sort Method: quicksort  Memory: 26kB
+  Buffers: shared hit=147139
+  ->  Finalize HashAggregate  (cost=486854.75..494732.49 rows=393887 width=20) (actual time=12028.229..12127.484 rows=30.00 loops=1)
+        Group Key: (((to_timestamp((occurred_at)::double precision) AT TIME ZONE 'Africa/Kigali'::text))::date)
+        Batches: 1  Memory Usage: 8225kB
+        Buffers: shared hit=147136
+        ->  Gather  (cost=377354.14..479764.78 rows=945329 width=20) (actual time=12022.315..12124.235 rows=90.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=147136
+              ->  Partial HashAggregate  (cost=376354.14..384231.88 rows=393887 width=20) (actual time=11950.877..11954.442 rows=30.00 loops=3)
+                    Group Key: ((to_timestamp((occurred_at)::double precision) AT TIME ZONE 'Africa/Kigali'::text))::date
+                    Batches: 1  Memory Usage: 8225kB
+                    Buffers: shared hit=147136
+                    Worker 0:  Batches: 1  Memory Usage: 8225kB
+                    Worker 1:  Batches: 1  Memory Usage: 8225kB
+                    ->  Parallel Seq Scan on transfers  (cost=0.00..313840.10 rows=8335205 width=8) (actual time=0.044..9188.031 rows=6667766.67 loops=3)
+                          Buffers: shared hit=147136
+Planning:
+  Buffers: shared hit=179
+Planning Time: 20.900 ms
+Execution Time: 12135.466 ms

@@ -1,0 +1,52 @@
+{
+  "machine": {
+    "checked_at_cat": "2026-10-25T13:40:21+02:00",
+    "os": "Windows 11 (10.0.22631)",
+    "cpu": "11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz",
+    "cpu_physical_cores": 4,
+    "cpu_logical_cores": 8,
+    "ram_gb": 34.1,
+    "python": "3.13.6",
+    "drivers": {
+      "psycopg": "3.3.6",
+      "libpq": 180004,
+      "neo4j": "6.4.1",
+      "numpy": "2.5.4",
+      "pandas": "3.1.0",
+      "matplotlib": "3.11.2"
+    },
+    "generator_sha256": "2ea0e59d2b7b987d84a3d151bd9d1ad7b3052bfbc25abf1466c8e94467e9455a"
+  },
+  "postgresql": {
+    "connected": true,
+    "version": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35226, 64-bit",
+    "database": "mobile_money",
+    "user": "postgres",
+    "server_now": "2026-10-25T13:40:23.176836+02:00",
+    "settings": {
+      "TimeZone": "Africa/Kigali",
+      "shared_buffers": "8GB",
+      "work_mem": "64MB",
+      "maintenance_work_mem": "2GB",
+      "effective_cache_size": "18GB",
+      "max_worker_processes": "8",
+      "max_parallel_workers_per_gather": "2",
+      "max_wal_size": "8GB",
+      "data_directory": "C:/Program Files/PostgreSQL/18/data"
+    }
+  },
+  "neo4j": {
+    "connected": true,
+    "product": "Neo4j Kernel",
+    "version": "2026.10.1",
+    "edition": "community",
+    "database": "neo4j",
+    "status": "online",
+    "memory_settings": {
+      "dbms.memory.transaction.total.max": "6.00GiB",
+      "server.memory.heap.initial_size": "8.00GiB",
+      "server.memory.heap.max_size": "8.00GiB",
+      "server.memory.pagecache.size": "10.00GiB"
+    }
+  }
+}

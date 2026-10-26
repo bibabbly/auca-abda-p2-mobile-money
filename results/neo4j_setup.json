@@ -1,0 +1,116 @@
+{
+  "import_seconds": 58.1,
+  "setup_seconds": 31.7,
+  "store_bytes": 2049368064,
+  "store_gb": 2.049,
+  "transaction_log_bytes": 10626,
+  "transaction_log_gb": 0.0,
+  "constraints": [
+    {
+      "name": "account_id_unique",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Account"
+      ],
+      "properties": [
+        "account_id"
+      ]
+    },
+    {
+      "name": "customer_id_unique",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Customer"
+      ],
+      "properties": [
+        "customer_id"
+      ]
+    },
+    {
+      "name": "device_id_unique",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Device"
+      ],
+      "properties": [
+        "device_id"
+      ]
+    }
+  ],
+  "indexes": [
+    {
+      "name": "account_id_unique",
+      "type": "RANGE",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Account"
+      ],
+      "properties": [
+        "account_id"
+      ],
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    },
+    {
+      "name": "customer_id_unique",
+      "type": "RANGE",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Customer"
+      ],
+      "properties": [
+        "customer_id"
+      ],
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    },
+    {
+      "name": "device_id_unique",
+      "type": "RANGE",
+      "entityType": "NODE",
+      "labelsOrTypes": [
+        "Device"
+      ],
+      "properties": [
+        "device_id"
+      ],
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    },
+    {
+      "name": "index_1b9dcc97",
+      "type": "LOOKUP",
+      "entityType": "RELATIONSHIP",
+      "labelsOrTypes": null,
+      "properties": null,
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    },
+    {
+      "name": "index_460996c0",
+      "type": "LOOKUP",
+      "entityType": "NODE",
+      "labelsOrTypes": null,
+      "properties": null,
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    },
+    {
+      "name": "transfer_occurred_at",
+      "type": "RANGE",
+      "entityType": "RELATIONSHIP",
+      "labelsOrTypes": [
+        "TRANSFER"
+      ],
+      "properties": [
+        "occurred_at"
+      ],
+      "state": "ONLINE",
+      "populationPercent": 100.0
+    }
+  ],
+  "all_online": true
+}

@@ -1,0 +1,17 @@
+-- neo_Q2-month  params={}
+
+MATCH ()-[t:TRANSFER]->()
+WITH (t.occurred_at + 7200) / 86400 AS cat_day, count(*) AS transfers, sum(t.amount_rwf) AS total_rwf
+RETURN date(datetime({epochSeconds: cat_day * 86400, timezone: 'Africa/Kigali'})) AS day,
+       transfers, total_rwf
+ORDER BY day
+
+====================================================================================================
++ProduceResults@neo4j               rows=30         dbHits=0            pageCacheHits=0 misses=0  | day, transfers, total_rwf
+  +Sort@neo4j                         rows=30         dbHits=0            pageCacheHits=0 misses=0  | day ASC
+    +Projection@neo4j                   rows=30         dbHits=60           pageCacheHits=0 misses=0  | date(datetime({epochSeconds: cat_day * $autoint_2, timezone: $autostring_3})) AS day
+      +EagerAggregation@neo4j             rows=30         dbHits=0            pageCacheHits=0 misses=0  | (cache[t.occurred_at] + $autoint_0) / $autoint_1 AS cat_day, count(*) AS transfers, sum(cache[t.amount_rwf]) AS total_rwf
+        +CacheProperties@neo4j              rows=20,003,300 dbHits=40,006,600   pageCacheHits=0 misses=0  | cache[t.occurred_at], cache[t.amount_rwf]
+          +DirectedRelationshipTypeScan@neo4j rows=20,003,300 dbHits=20,003,301   pageCacheHits=0 misses=0  | ()-[t:TRANSFER]->()
+
+Total dbHits: 60,009,961   result available after 37 ms, consumed after 8641 ms

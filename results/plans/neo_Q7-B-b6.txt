@@ -1,0 +1,22 @@
+-- neo_Q7-B-b6  params={'account': 147228, 'destination': 186823, 'start': 1789285500, 'end': 1789289100, 'bound': 6}
+
+MATCH (a:Account {account_id: $account}), (d:Account {account_id: $destination})
+WHERE a.role = 'person' AND d.role = 'person'
+OPTIONAL MATCH p = SHORTEST 1 (a) (()-[:TRANSFER]->(:Account {role: 'person'})){1,6} (d)
+RETURN min(length(p)) AS shortest_length
+
+====================================================================================================
++ProduceResults@neo4j               rows=1          dbHits=0            pageCacheHits=0 misses=0  | shortest_length
+  +EagerAggregation@neo4j             rows=1          dbHits=0            pageCacheHits=0 misses=0  | min(length((a)-[anon_7*]->(d))) AS shortest_length
+    +Apply@neo4j                        rows=1          dbHits=0            pageCacheHits=0 misses=0
+      +CartesianProduct@neo4j             rows=1          dbHits=0            pageCacheHits=0 misses=0
+        +Filter@neo4j                       rows=1          dbHits=1            pageCacheHits=0 misses=0  | a.role = $autostring_0
+          +NodeUniqueIndexSeek@neo4j          rows=1          dbHits=2            pageCacheHits=0 misses=0  | UNIQUE a:Account(account_id) WHERE account_id = $account
+        +Filter@neo4j                       rows=1          dbHits=1            pageCacheHits=0 misses=0  | cache[d.role] = $autostring_1
+          +NodeUniqueIndexSeek@neo4j          rows=1          dbHits=2            pageCacheHits=0 misses=0  | UNIQUE d:Account(account_id) WHERE account_id = $destination
+      +Optional@neo4j                     rows=1          dbHits=0            pageCacheHits=0 misses=0  | a, d
+        +ShortestPath@neo4j                 rows=1          dbHits=18,794       pageCacheHits=0 misses=0  | anon_13 = (a)-[anon_7:TRANSFER*..6]->(d) WHERE all(anon_12 IN relationships(anon_13) WHERE endNode(anon_12).role = $autostring_2) AND all(an
+          +Filter@neo4j                       rows=1          dbHits=1            pageCacheHits=0 misses=0  | cache[d.role] = $autostring_2 AND d:Account
+            +Argument@neo4j                     rows=1          dbHits=0            pageCacheHits=0 misses=0  | a, d
+
+Total dbHits: 18,801   result available after 26 ms, consumed after 15 ms

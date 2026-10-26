@@ -1,0 +1,102 @@
+﻿Section 6.1: 61-case comparison (Q7 SQL version: plain)
+case            PG   Neo  status          Q7 path           PG s   Neo s
+----------------------------------------------------------------------
+Q1-A             1     1  MATCH                             0.23    2.08
+Q1-B             1     1  MATCH                             0.00    0.01
+Q1-C             1     1  MATCH                             0.00    0.01
+Q1-D             1     1  MATCH                             0.00    0.01
+Q1-E             1     1  MATCH                             0.00    0.01
+Q1-F             1     1  MATCH                             0.00    0.01
+Q2-month        30    30  MATCH                            13.29   46.81
+Q3-A             4     4  MATCH                             0.01    0.01
+Q3-B             9     9  MATCH                             0.00    0.01
+Q3-C             9     9  MATCH                             0.00    0.01
+Q3-D             4     4  MATCH                             0.00    0.01
+Q3-E             9     9  MATCH                             0.00    0.01
+Q3-F             9     9  MATCH                             0.00    0.01
+Q4-A-d4          2     2  MATCH                             0.01    0.01
+Q4-A-d6          5     5  MATCH                             0.01    0.01
+Q4-A-d8          5     5  MATCH                             0.01    0.01
+Q4-A-d10         5     5  MATCH                             0.01    0.01
+Q4-B-d4          5     5  MATCH                             0.00    0.01
+Q4-B-d6          5     5  MATCH                             0.01    0.01
+Q4-B-d8          5     5  MATCH                             0.01    0.01
+Q4-B-d10         5     5  MATCH                             0.03    0.01
+Q4-C-d4          5     5  MATCH                             0.03    0.01
+Q4-C-d6          5     5  MATCH                             0.04    0.01
+Q4-C-d8          5     5  MATCH                             0.08    0.01
+Q4-C-d10         5     5  MATCH                             0.11    0.02
+Q4-D-d4          3     3  MATCH                             0.00    0.01
+Q4-D-d6          5     5  MATCH                             0.01    0.01
+Q4-D-d8          5     5  MATCH                             0.01    0.01
+Q4-D-d10         5     5  MATCH                             0.01    0.01
+Q4-E-d4          5     5  MATCH                             0.00    0.01
+Q4-E-d6          5     5  MATCH                             0.01    0.01
+Q4-E-d8          5     5  MATCH                             0.01    0.01
+Q4-E-d10         5     5  MATCH                             0.01    0.01
+Q4-F-d4          5     5  MATCH                             0.00    0.01
+Q4-F-d6          5     5  MATCH                             0.02    0.01
+Q4-F-d8          5     5  MATCH                             0.03    0.01
+Q4-F-d10         5     5  MATCH                             0.09    0.02
+Q5-A             1     1  MATCH                             0.01    0.01
+Q5-B             1     1  MATCH                             0.00    0.01
+Q5-C             1     1  MATCH                             0.00    0.04
+Q5-D             0     0  MATCH                             0.00    0.01
+Q5-E             0     0  MATCH                             0.00    0.01
+Q5-F             0     0  MATCH                             0.00    0.01
+Q6-A             1     1  MATCH                             0.00    0.01
+Q6-B             0     0  MATCH                             0.00    0.01
+Q6-C             1     1  MATCH                             0.00    0.01
+Q6-D             0     0  MATCH                             0.00    0.01
+Q6-E             0     0  MATCH                             0.00    0.01
+Q6-F             0     0  MATCH                             0.00    0.01
+Q7-A-b4          1     1  LENGTH MATCH    PATH VALID        1.65    0.02
+Q7-A-b6          1     1  LENGTH MATCH    PATH VALID      112.01    0.02
+Q7-B-b4          1     1  LENGTH MATCH    no route          1.14    0.04
+Q7-B-b6          1     1  LENGTH MATCH    PATH VALID       96.84    0.03
+Q7-C-b4          1     1  LENGTH MATCH    no route          0.91    0.03
+Q7-C-b6          1     1  LENGTH MATCH    PATH VALID       86.72    0.04
+Q7-D-b4          1     1  LENGTH MATCH    PATH VALID        1.17    0.01
+Q7-D-b6          1     1  LENGTH MATCH    PATH VALID      102.23    0.01
+Q7-E-b4          1     1  LENGTH MATCH    no route          1.12    0.03
+Q7-E-b6          1     1  LENGTH MATCH    PATH VALID      103.71    0.07
+Q7-F-b4          1     1  LENGTH MATCH    no route          1.40    0.03
+Q7-F-b6          1     1  LENGTH MATCH    PATH VALID      112.81    0.08
+
+======================================================================
+question    cases  matching  expected  status
+----------------------------------------------------------------------
+Q1              6         6         6  OK
+Q2              1         1         1  OK
+Q3              6         6         6  OK
+Q4             24        24        24  OK
+Q5              6         6         6  OK
+Q6              6         6         6  OK
+Q7             12        12        12  OK
+----------------------------------------------------------------------
+TOTAL          61        61        61  ALL MATCH
+Q7 supporting paths valid: 8 of 8 successful cases
+
+======================================================================
+Independent check 1: one Q3 device overlap re-derived from the CSV files
+  CSV account_devices: account 998 on device 228001 days [0,29]; account 8917 days [0,29]
+  CSV devices: device 228001 access_type=handset
+  overlap from CSV = [0,29]   database row = [0,29]   OK
+
+Independent check 2: one Q6 cycle re-derived from transfers.csv (streamed)
+  CSV transfer 20000001: 998 -> 8917  2026-09-06 10:00:00 CAT  200,000 RWF
+  CSV transfer 20000002: 8917 -> 16836  2026-09-06 10:00:40 CAT  196,000 RWF
+  CSV transfer 20000003: 16836 -> 24755  2026-09-06 10:01:20 CAT  192,080 RWF
+  CSV transfer 20000004: 24755 -> 998  2026-09-06 10:02:00 CAT  188,238 RWF
+    starts at review account                OK
+    returns to review account at the end    OK
+    no earlier return                       OK
+    consecutive (receiver = next sender)    OK
+    strictly increasing time                OK
+    inside review hour                      OK
+    span <= 1800 s                          OK
+    amount rule 90-105%                     OK
+    length 3..8                             OK
+
+======================================================================
+61-CASE COMPARISON (plain Q7 SQL): PASSED   (saved compare_61_plain.csv/.json)

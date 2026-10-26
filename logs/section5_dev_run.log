@@ -1,0 +1,273 @@
+﻿========================================================================================================================
+Q4 Ownership and device network: distinct other accounts within N links, by owner region
+
+WITH RECURSIVE edges(sk, si, dk, di) AS (
+    SELECT 'Customer', customer_id, 'Account', account_id FROM accounts
+    UNION ALL
+    SELECT 'Account', account_id, 'Customer', customer_id FROM accounts
+    UNION ALL
+    SELECT 'Account', account_id, 'Device', device_id FROM account_devices
+    UNION ALL
+    SELECT 'Device', device_id, 'Account', account_id FROM account_devices
+), walk(kind, id, depth) AS (
+    SELECT 'Account', %(account)s::integer, 0
+    UNION
+    SELECT e.dk, e.di, w.depth + 1
+    FROM walk w JOIN edges e ON e.sk = w.kind AND e.si = w.id
+    WHERE w.depth < %(depth)s
+)
+SELECT c.region, COUNT(DISTINCT w.id) AS accounts
+FROM walk w
+JOIN accounts a  ON a.account_id = w.id
+JOIN customers c ON c.customer_id = a.customer_id
+WHERE w.kind = 'Account' AND w.id <> %(account)s
+GROUP BY c.region
+ORDER BY c.region
+
+
+MATCH (a:Account {account_id: $account})
+MATCH (a)-[:OWNS|USED_DEVICE*1..4]-(b:Account)
+WHERE b <> a
+WITH DISTINCT b
+MATCH (c:Customer)-[:OWNS]->(b)
+RETURN c.region AS region, count(b) AS accounts
+ORDER BY region
+
+set  account depth  PG total Neo total    PG s   Neo s  match   regions (PostgreSQL)
+------------------------------------------------------------------------------------------------------------------------
+A        998     4        10        10    0.08    2.08  OK    Kigali=3, Northern=7
+A        998     6        43        43    0.00    0.01  OK    Eastern=6, Kigali=9, Northern=13, Southern=9, Western=6
+A        998     8       175       175    0.00    0.00  OK    Eastern=30, Kigali=33, Northern=37, Southern=45, Western=30
+A        998    10       187       187    0.01    0.01  OK    Eastern=36, Kigali=35, Northern=37, Southern=45, Western=34
+B     147228     4        46        46    0.00    0.00  OK    Eastern=13, Kigali=6, Northern=7, Southern=9, Western=11
+B     147228     6       178       178    0.00    0.00  OK    Eastern=37, Kigali=30, Northern=35, Southern=45, Western=31
+B     147228     8       188       188    0.01    0.01  OK    Eastern=40, Kigali=33, Northern=35, Southern=47, Western=33
+B     147228    10       228       228    0.01    0.01  OK    Eastern=45, Kigali=41, Northern=46, Southern=57, Western=39
+C     206978     4       146       146    0.05    0.03  OK    Eastern=23, Kigali=24, Northern=29, Southern=43, Western=27
+C     206978     6       483       483    0.05    0.01  OK    Eastern=82, Kigali=90, Northern=97, Southern=121, Western=93
+C     206978     8       832       832    0.05    0.04  OK    Eastern=151, Kigali=172, Northern=167, Southern=186, Western=156
+C     206978    10     1,433     1,433    0.11    0.04  OK    Eastern=278, Kigali=293, Northern=295, Southern=294, Western=273
+D     237998     4        10        10    0.00    0.01  OK    Eastern=2, Northern=1, Western=7
+D     237998     6        44        44    0.01    0.01  OK    Eastern=8, Kigali=10, Northern=7, Southern=6, Western=13
+D     237998     8       180       180    0.01    0.01  OK    Eastern=32, Kigali=50, Northern=31, Southern=30, Western=37
+D     237998    10       192       192    0.01    0.01  OK    Eastern=34, Kigali=50, Northern=37, Southern=34, Western=37
+E     144228     4        47        47    0.00    0.01  OK    Eastern=6, Kigali=10, Northern=13, Southern=11, Western=7
+E     144228     6       183       183    0.00    0.01  OK    Eastern=30, Kigali=50, Northern=37, Southern=31, Western=35
+E     144228     8       193       193    0.01    0.01  OK    Eastern=33, Kigali=52, Northern=40, Southern=33, Western=35
+E     144228    10       230       230    0.02    0.01  OK    Eastern=40, Kigali=62, Northern=45, Southern=39, Western=44
+F     203978     4       147       147    0.00    0.00  OK    Eastern=25, Kigali=44, Northern=29, Southern=27, Western=22
+F     203978     6       488       488    0.01    0.01  OK    Eastern=93, Kigali=125, Northern=92, Southern=96, Western=82
+F     203978     8       837       837    0.02    0.01  OK    Eastern=161, Kigali=190, Northern=164, Southern=174, Western=148
+F     203978    10     1,426     1,426    0.06    0.02  OK    Eastern=278, Kigali=302, Northern=295, Southern=288, Western=263
+
+Q4: 24 of 24 comparisons match
+Chart saved: D:\AUCA\ABDA_Project2\results\charts\q4_depth.png
+
+Q4 supporting paths (set A, Cypher shortestPath, labels and IDs)
+  4 links: Account 998 -[USED_DEVICE]- Device 228001 -[USED_DEVICE]- Account 16836 -[OWNS]- Customer 16836 -[OWNS]- Account 236836
+  6 links: Account 998 -[USED_DEVICE]- Device 228001 -[USED_DEVICE]- Account 24755 -[USED_DEVICE]- Device 24751 -[USED_DEVICE]- Account 24752 -[USED_DEVICE]- Device 227777 -[USED_DEVICE]- Account 101752
+
+========================================================================================================================
+Q5 Rapid onward payments: 3 transfers, 4 distinct accounts, <= 600 s gaps, 90-105% amounts
+
+SELECT t1.transfer_id AS t1_id, t2.transfer_id AS t2_id, t3.transfer_id AS t3_id,
+       t3.receiver_id AS final_receiver
+FROM transfers t1
+JOIN transfers t2 ON t2.sender_id = t1.receiver_id
+                 AND t2.occurred_at > t1.occurred_at AND t2.occurred_at <= t1.occurred_at + 600
+JOIN transfers t3 ON t3.sender_id = t2.receiver_id
+                 AND t3.occurred_at > t2.occurred_at AND t3.occurred_at <= t2.occurred_at + 600
+WHERE t1.sender_id = %(account)s
+  AND t1.occurred_at >= %(start)s AND t1.occurred_at < %(end)s
+  AND 90::bigint * t1.amount_rwf <= 100::bigint * t2.amount_rwf
+  AND 100::bigint * t2.amount_rwf <= 105::bigint * t1.amount_rwf
+  AND 90::bigint * t2.amount_rwf <= 100::bigint * t3.amount_rwf
+  AND 100::bigint * t3.amount_rwf <= 105::bigint * t2.amount_rwf
+  AND t1.receiver_id <> t1.sender_id
+  AND t2.receiver_id NOT IN (t1.sender_id, t1.receiver_id)
+  AND t3.receiver_id NOT IN (t1.sender_id, t1.receiver_id, t2.receiver_id)
+ORDER BY t1_id, t2_id, t3_id, final_receiver
+
+
+MATCH (a:Account {account_id: $account})-[t1:TRANSFER]->(b:Account)
+WHERE t1.occurred_at >= $start AND t1.occurred_at < $end
+MATCH (b)-[t2:TRANSFER]->(c:Account)
+WHERE t2.occurred_at > t1.occurred_at AND t2.occurred_at <= t1.occurred_at + 600
+  AND 90 * t1.amount_rwf <= 100 * t2.amount_rwf AND 100 * t2.amount_rwf <= 105 * t1.amount_rwf
+MATCH (c)-[t3:TRANSFER]->(d:Account)
+WHERE t3.occurred_at > t2.occurred_at AND t3.occurred_at <= t2.occurred_at + 600
+  AND 90 * t2.amount_rwf <= 100 * t3.amount_rwf AND 100 * t3.amount_rwf <= 105 * t2.amount_rwf
+  AND a <> b AND a <> c AND a <> d AND b <> c AND b <> d AND c <> d
+RETURN t1.transfer_id AS t1_id, t2.transfer_id AS t2_id, t3.transfer_id AS t3_id,
+       d.account_id AS final_receiver
+ORDER BY t1_id, t2_id, t3_id, final_receiver
+
+Set A account    998: PostgreSQL 1 rows, Neo4j 1 rows  OK   (0.01 s / 0.01 s)
+     (20000001, 20000002, 20000003, 24755)
+Set B account 147228: PostgreSQL 1 rows, Neo4j 1 rows  OK   (0.00 s / 0.00 s)
+     (20000092, 20000093, 20000094, 170985)
+Set C account 206978: PostgreSQL 1 rows, Neo4j 1 rows  OK   (0.00 s / 0.01 s)
+     (20000229, 20000230, 20000231, 230735)
+Set D account 237998: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.00 s)
+Set E account 144228: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.00 s)
+Set F account 203978: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.01 s)
+
+Q5 summary
+set   account  PG rows  Neo rows  match
+A         998        1         1  OK
+B      147228        1         1  OK
+C      206978        1         1  OK
+D      237998        0         0  OK
+E      144228        0         0  OK
+F      203978        0         0  OK
+
+Q5 example from set A: (20000001, 20000002, 20000003, 24755)
+   transfer_id  sender role      receiver role                time (CAT)  gap s  amount RWF  % prev
+      20000001     998 person        8917 person     2026-09-06 10:00:00            200,000        
+      20000002    8917 person       16836 person     2026-09-06 10:00:40     40     196,000   98.00
+      20000003   16836 person       24755 person     2026-09-06 10:01:20     40     192,080   98.00
+
+========================================================================================================================
+Q6 Circular payments: 3-8 transfers back to the review account within its hour, span <= 1800 s
+
+WITH RECURSIVE walk(cur, ids, first_t, last_t, last_amt, len) AS (
+    SELECT receiver_id, ARRAY[transfer_id], occurred_at, occurred_at, amount_rwf, 1
+    FROM transfers
+    WHERE sender_id = %(account)s
+      AND occurred_at >= %(start)s AND occurred_at < %(end)s
+    UNION ALL
+    SELECT t.receiver_id, w.ids || t.transfer_id, w.first_t, t.occurred_at, t.amount_rwf, w.len + 1
+    FROM walk w
+    JOIN transfers t ON t.sender_id = w.cur
+                    AND t.occurred_at > w.last_t
+                    AND t.occurred_at < %(end)s
+                    AND t.occurred_at <= w.first_t + 1800
+    WHERE w.len < 8
+      AND w.cur <> %(account)s
+      AND 90::bigint * w.last_amt <= 100::bigint * t.amount_rwf
+      AND 100::bigint * t.amount_rwf <= 105::bigint * w.last_amt
+)
+SELECT ids AS transfer_ids, len AS length
+FROM walk
+WHERE cur = %(account)s AND len >= 3
+ORDER BY ids
+
+
+MATCH (a:Account {account_id: $account})
+MATCH p = (a) (()-[t:TRANSFER]->() WHERE t.occurred_at >= $start AND t.occurred_at < $end){3,8} (a)
+WITH p, a, relationships(p) AS ts
+WHERE last(ts).occurred_at - ts[0].occurred_at <= 1800
+  AND all(i IN range(1, size(ts) - 1)
+          WHERE ts[i].occurred_at > ts[i - 1].occurred_at
+            AND 90 * ts[i - 1].amount_rwf <= 100 * ts[i].amount_rwf
+            AND 100 * ts[i].amount_rwf <= 105 * ts[i - 1].amount_rwf)
+  AND none(n IN nodes(p)[1..-1] WHERE n = a)
+RETURN [t IN ts | t.transfer_id] AS transfer_ids, size(ts) AS length
+ORDER BY transfer_ids
+
+Set A account    998: PostgreSQL 1 rows, Neo4j 1 rows  OK   (0.00 s / 0.01 s)
+     ((20000001, 20000002, 20000003, 20000004), 4)
+Set B account 147228: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.01 s)
+Set C account 206978: PostgreSQL 1 rows, Neo4j 1 rows  OK   (0.00 s / 0.01 s)
+     ((20000229, 20000230, 20000231, 20000232, 20000233, 20000234), 6)
+Set D account 237998: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.00 s)
+Set E account 144228: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.00 s)
+Set F account 203978: PostgreSQL 0 rows, Neo4j 0 rows  OK   (0.00 s / 0.00 s)
+
+Q6 summary
+set   account  PG rows  Neo rows  match
+A         998        1         1  OK
+B      147228        0         0  OK
+C      206978        1         1  OK
+D      237998        0         0  OK
+E      144228        0         0  OK
+F      203978        0         0  OK
+
+Q6 example from set A: ((20000001, 20000002, 20000003, 20000004), 4)
+   transfer_id  sender role      receiver role                time (CAT)  gap s  amount RWF  % prev
+      20000001     998 person        8917 person     2026-09-06 10:00:00            200,000        
+      20000002    8917 person       16836 person     2026-09-06 10:00:40     40     196,000   98.00
+      20000003   16836 person       24755 person     2026-09-06 10:01:20     40     192,080   98.00
+      20000004   24755 person         998 person     2026-09-06 10:02:00     40     188,238   98.00
+
+========================================================================================================================
+Q7 Shortest directed transfer connection, person accounts only, bounds 4 and 6
+
+WITH RECURSIVE bfs(node, depth) AS (
+    SELECT a.account_id, 0 FROM accounts a
+    WHERE a.account_id = %(account)s AND a.role = 'person'
+    UNION
+    SELECT t.receiver_id, b.depth + 1
+    FROM bfs b
+    JOIN transfers t ON t.sender_id = b.node
+    JOIN accounts r  ON r.account_id = t.receiver_id AND r.role = 'person'
+    WHERE b.depth < %(bound)s
+)
+SELECT MIN(depth) AS shortest_length FROM bfs WHERE node = %(destination)s
+
+
+MATCH (a:Account {account_id: $account}), (d:Account {account_id: $destination})
+WHERE a.role = 'person' AND d.role = 'person'
+OPTIONAL MATCH p = SHORTEST 1 (a) (()-[:TRANSFER]->(:Account {role: 'person'})){1,6} (d)
+RETURN min(length(p)) AS shortest_length
+
+set  account destination bound PG length Neo length    PG s   Neo s  match
+--------------------------------------------------------------------------------
+A        998       24755     4         3          3    0.52    0.01  OK
+A        998       24755     6         3          3   49.52    0.01  OK
+B     147228      186823     4      none       none    0.56    0.01  OK
+B     147228      186823     6         5          5   52.39    0.01  OK
+C     206978        6573     4      none       none    0.44    0.02  OK
+C     206978        6573     6         5          5   40.45    0.02  OK
+D     237998       21755     4         3          3    0.54    0.00  OK
+D     237998       21755     6         3          3   46.62    0.01  OK
+E     144228      183823     4      none       none    0.55    0.01  OK
+E     144228      183823     6         5          5   45.34    0.02  OK
+F     203978        3573     4      none       none    0.60    0.01  OK
+F     203978        3573     6         5          5   46.31    0.02  OK
+
+Q7 path checks (path from Neo4j SHORTEST, each step verified in PostgreSQL)
+Set A bound 4: accounts 998 -> 8917 -> 16836 -> 24755   transfers [20000001, 20000002, 20000003]   ALL CHECKS OK
+       20000001: 998 (person) -> 8917 (person)  2026-09-06 10:00:00  200,000 RWF
+       20000002: 8917 (person) -> 16836 (person)  2026-09-06 10:00:40  196,000 RWF
+       20000003: 16836 (person) -> 24755 (person)  2026-09-06 10:01:20  192,080 RWF
+Set A bound 6: accounts 998 -> 8917 -> 16836 -> 24755   transfers [20000001, 20000002, 20000003]   ALL CHECKS OK
+       20000001: 998 (person) -> 8917 (person)  2026-09-06 10:00:00  200,000 RWF
+       20000002: 8917 (person) -> 16836 (person)  2026-09-06 10:00:40  196,000 RWF
+       20000003: 16836 (person) -> 24755 (person)  2026-09-06 10:01:20  192,080 RWF
+Set B bound 6: accounts 147228 -> 147906 -> 147310 -> 148101 -> 178904 -> 186823   transfers [11540891, 15207140, 18927851, 16500879, 20000096]   ALL CHECKS OK
+       11540891: 147228 (person) -> 147906 (person)  2026-09-18 10:58:52  24,600 RWF
+       15207140: 147906 (person) -> 147310 (person)  2026-09-23 18:58:16  5,700 RWF
+       18927851: 147310 (person) -> 148101 (person)  2026-09-29 12:16:06  4,700 RWF
+       16500879: 148101 (person) -> 178904 (person)  2026-09-25 18:01:15  6,800 RWF
+       20000096: 178904 (person) -> 186823 (person)  2026-09-13 10:02:57  968,486 RWF
+Set C bound 6: accounts 206978 -> 214897 -> 222816 -> 230735 -> 238654 -> 6573   transfers [20000229, 20000230, 20000231, 20000232, 20000233]   ALL CHECKS OK
+       20000229: 206978 (person) -> 214897 (person)  2026-09-08 10:00:42  300,000 RWF
+       20000230: 214897 (person) -> 222816 (person)  2026-09-08 10:01:22  294,000 RWF
+       20000231: 222816 (person) -> 230735 (person)  2026-09-08 10:02:02  288,120 RWF
+       20000232: 230735 (person) -> 238654 (person)  2026-09-08 10:02:42  282,357 RWF
+       20000233: 238654 (person) -> 6573 (person)  2026-09-08 10:03:22  276,710 RWF
+Set D bound 4: accounts 237998 -> 5917 -> 13836 -> 21755   transfers [20001651, 20001652, 20001653]   ALL CHECKS OK
+       20001651: 237998 (person) -> 5917 (person)  2026-09-06 10:00:00  45,000 RWF
+       20001652: 5917 (person) -> 13836 (person)  2026-09-08 10:00:00  45,000 RWF
+       20001653: 13836 (person) -> 21755 (person)  2026-09-10 10:00:00  45,000 RWF
+Set D bound 6: accounts 237998 -> 5917 -> 13836 -> 21755   transfers [20001651, 20001652, 20001653]   ALL CHECKS OK
+       20001651: 237998 (person) -> 5917 (person)  2026-09-06 10:00:00  45,000 RWF
+       20001652: 5917 (person) -> 13836 (person)  2026-09-08 10:00:00  45,000 RWF
+       20001653: 13836 (person) -> 21755 (person)  2026-09-10 10:00:00  45,000 RWF
+Set E bound 6: accounts 144228 -> 152147 -> 160066 -> 167985 -> 175904 -> 183823   transfers [20001742, 20001743, 20001744, 20001745, 20001746]   ALL CHECKS OK
+       20001742: 144228 (person) -> 152147 (person)  2026-09-13 10:00:17  40,000 RWF
+       20001743: 152147 (person) -> 160066 (person)  2026-09-15 10:00:17  40,000 RWF
+       20001744: 160066 (person) -> 167985 (person)  2026-09-17 10:00:17  40,000 RWF
+       20001745: 167985 (person) -> 175904 (person)  2026-09-19 10:00:17  40,000 RWF
+       20001746: 175904 (person) -> 183823 (person)  2026-09-21 10:00:17  40,000 RWF
+Set F bound 6: accounts 203978 -> 211897 -> 219816 -> 227735 -> 235654 -> 3573   transfers [20001879, 20001880, 20001881, 20001882, 20001883]   ALL CHECKS OK
+       20001879: 203978 (person) -> 211897 (person)  2026-09-08 10:00:42  30,000 RWF
+       20001880: 211897 (person) -> 219816 (person)  2026-09-10 10:00:42  30,000 RWF
+       20001881: 219816 (person) -> 227735 (person)  2026-09-12 10:00:42  30,000 RWF
+       20001882: 227735 (person) -> 235654 (person)  2026-09-14 10:00:42  30,000 RWF
+       20001883: 235654 (person) -> 3573 (person)  2026-09-16 10:00:42  30,000 RWF
+
+Q7: 12 of 12 length comparisons match
+
+Section 5: Q4 PASSED, Q5 PASSED, Q6 PASSED, Q7 PASSED

@@ -1,0 +1,41 @@
+2026-10-25 13:49:26 Capture started 2026-10-25T13:49:26+02:00
+2026-10-25 13:49:26 Capturing customers ...
+2026-10-25 13:49:26 customers        consumed=228,000      written=228,000      expected=228,000      OK  0.5 s  0.004 GB
+2026-10-25 13:49:26 Capturing accounts ...
+2026-10-25 13:49:27 accounts         consumed=248,000      written=248,000      expected=248,000      OK  0.5 s  0.005 GB
+2026-10-25 13:49:27 Capturing devices ...
+2026-10-25 13:49:27 devices          consumed=228,600      written=228,600      expected=228,600      OK  0.3 s  0.004 GB
+2026-10-25 13:49:27 Capturing account_devices ...
+2026-10-25 13:49:28 account_devices  consumed=285,600      written=285,600      expected=285,600      OK  0.7 s  0.006 GB
+2026-10-25 13:49:28 Capturing transfers ...
+2026-10-25 13:49:32   transfers written: 1,000,000 (3.7 s)
+2026-10-25 13:49:36   transfers written: 2,000,000 (7.5 s)
+2026-10-25 13:49:40   transfers written: 3,000,000 (11.6 s)
+2026-10-25 13:49:44   transfers written: 4,000,000 (15.6 s)
+2026-10-25 13:49:48   transfers written: 5,000,000 (19.6 s)
+2026-10-25 13:49:52   transfers written: 6,000,000 (23.7 s)
+2026-10-25 13:49:56   transfers written: 7,000,000 (27.7 s)
+2026-10-25 13:50:00   transfers written: 8,000,000 (31.7 s)
+2026-10-25 13:50:04   transfers written: 9,000,000 (35.7 s)
+2026-10-25 13:50:08   transfers written: 10,000,000 (39.7 s)
+2026-10-25 13:50:12   transfers written: 11,000,000 (43.8 s)
+2026-10-25 13:50:16   transfers written: 12,000,000 (47.8 s)
+2026-10-25 13:50:20   transfers written: 13,000,000 (52.0 s)
+2026-10-25 13:50:24   transfers written: 14,000,000 (56.2 s)
+2026-10-25 13:50:28   transfers written: 15,000,000 (60.2 s)
+2026-10-25 13:50:32   transfers written: 16,000,000 (64.2 s)
+2026-10-25 13:50:36   transfers written: 17,000,000 (68.4 s)
+2026-10-25 13:50:41   transfers written: 18,000,000 (72.7 s)
+2026-10-25 13:50:45   transfers written: 19,000,000 (77.1 s)
+2026-10-25 13:50:49   transfers written: 20,000,000 (81.2 s)
+2026-10-25 13:50:50 transfers        consumed=20,003,300   written=20,003,300   expected=20,003,300   OK  81.7 s  0.780 GB
+2026-10-25 13:50:50 ================================================================================================
+2026-10-25 13:50:50 stream                 consumed        written       expected   status    seconds    CSV GB
+2026-10-25 13:50:50 customers               228,000        228,000        228,000       OK        0.5     0.004
+2026-10-25 13:50:50 accounts                248,000        248,000        248,000       OK        0.5     0.005
+2026-10-25 13:50:50 devices                 228,600        228,600        228,600       OK        0.3     0.004
+2026-10-25 13:50:50 account_devices         285,600        285,600        285,600       OK        0.7     0.006
+2026-10-25 13:50:50 transfers            20,003,300     20,003,300     20,003,300       OK       81.7     0.780
+2026-10-25 13:50:50 TOTAL                               20,993,500     20,993,500       OK       83.8     0.799
+2026-10-25 13:50:50 Transfer audit: count=20,003,300  earliest=1788235200 (2026-09-01T06:00:00+02:00)  latest=1790798399 (2026-09-30T21:59:59+02:00)  sum_amount_rwf=231,482,327,870
+2026-10-25 13:50:50 Saved results/capture_audit.json

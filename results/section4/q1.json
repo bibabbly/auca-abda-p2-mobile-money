@@ -1,0 +1,98 @@
+[
+  {
+    "set": "A",
+    "account": 998,
+    "destination": 24755,
+    "start": 1788680700,
+    "end": 1788684300,
+    "postgres": [
+      1,
+      200000
+    ],
+    "neo4j": [
+      1,
+      200000
+    ],
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "destination": 186823,
+    "start": 1789285500,
+    "end": 1789289100,
+    "postgres": [
+      1,
+      1050000
+    ],
+    "neo4j": [
+      1,
+      1050000
+    ],
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "destination": 6573,
+    "start": 1788853500,
+    "end": 1788857100,
+    "postgres": [
+      1,
+      300000
+    ],
+    "neo4j": [
+      1,
+      300000
+    ],
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "destination": 21755,
+    "start": 1788680700,
+    "end": 1788684300,
+    "postgres": [
+      1,
+      45000
+    ],
+    "neo4j": [
+      1,
+      45000
+    ],
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "destination": 183823,
+    "start": 1789285500,
+    "end": 1789289100,
+    "postgres": [
+      1,
+      40000
+    ],
+    "neo4j": [
+      1,
+      40000
+    ],
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "destination": 3573,
+    "start": 1788853500,
+    "end": 1788857100,
+    "postgres": [
+      1,
+      30000
+    ],
+    "neo4j": [
+      1,
+      30000
+    ],
+    "match": true
+  }
+]

@@ -1,0 +1,22 @@
+-- neo_Q4-B-d10  params={'account': 147228, 'destination': 186823, 'start': 1789285500, 'end': 1789289100, 'depth': 10}
+
+MATCH (a:Account {account_id: $account})
+MATCH (a)-[:OWNS|USED_DEVICE*1..10]-(b:Account)
+WHERE b <> a
+WITH DISTINCT b
+MATCH (c:Customer)-[:OWNS]->(b)
+RETURN c.region AS region, count(b) AS accounts
+ORDER BY region
+
+====================================================================================================
++ProduceResults@neo4j               rows=5          dbHits=0            pageCacheHits=0 misses=0  | region, accounts
+  +Sort@neo4j                         rows=5          dbHits=0            pageCacheHits=0 misses=0  | region ASC
+    +EagerAggregation@neo4j             rows=5          dbHits=228          pageCacheHits=0 misses=0  | c.region AS region, count(b) AS accounts
+      +Filter@neo4j                       rows=228        dbHits=228          pageCacheHits=0 misses=0  | c:Customer
+        +Expand(All)@neo4j                  rows=228        dbHits=912          pageCacheHits=0 misses=0  | (b)<-[:OWNS]-(c)
+          +Projection@neo4j                   rows=228        dbHits=0            pageCacheHits=0 misses=0  | b
+            +Filter@neo4j                       rows=228        dbHits=453          pageCacheHits=0 misses=0  | NOT b = a AND b:Account
+              +VarLengthExpand(Pruning,BFS,All)@neo4j rows=453        dbHits=1,885        pageCacheHits=0 misses=0  | (a)-[:OWNS|USED_DEVICE*..10]-(b) 
+                +NodeUniqueIndexSeek@neo4j          rows=1          dbHits=2            pageCacheHits=0 misses=0  | UNIQUE a:Account(account_id) WHERE account_id = $account
+
+Total dbHits: 3,708   result available after 22 ms, consumed after 5 ms

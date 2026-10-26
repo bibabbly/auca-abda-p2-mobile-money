@@ -1,0 +1,1210 @@
+[
+  {
+    "set": "A",
+    "account": 998,
+    "depth": 4,
+    "postgres": [
+      [
+        "Kigali",
+        3
+      ],
+      [
+        "Northern",
+        7
+      ]
+    ],
+    "neo4j": [
+      [
+        "Kigali",
+        3
+      ],
+      [
+        "Northern",
+        7
+      ]
+    ],
+    "postgres_total": 10,
+    "neo4j_total": 10,
+    "match": true
+  },
+  {
+    "set": "A",
+    "account": 998,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        6
+      ],
+      [
+        "Kigali",
+        9
+      ],
+      [
+        "Northern",
+        13
+      ],
+      [
+        "Southern",
+        9
+      ],
+      [
+        "Western",
+        6
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        6
+      ],
+      [
+        "Kigali",
+        9
+      ],
+      [
+        "Northern",
+        13
+      ],
+      [
+        "Southern",
+        9
+      ],
+      [
+        "Western",
+        6
+      ]
+    ],
+    "postgres_total": 43,
+    "neo4j_total": 43,
+    "match": true
+  },
+  {
+    "set": "A",
+    "account": 998,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        30
+      ],
+      [
+        "Kigali",
+        33
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        30
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        30
+      ],
+      [
+        "Kigali",
+        33
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        30
+      ]
+    ],
+    "postgres_total": 175,
+    "neo4j_total": 175,
+    "match": true
+  },
+  {
+    "set": "A",
+    "account": 998,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        36
+      ],
+      [
+        "Kigali",
+        35
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        34
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        36
+      ],
+      [
+        "Kigali",
+        35
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        34
+      ]
+    ],
+    "postgres_total": 187,
+    "neo4j_total": 187,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "depth": 4,
+    "postgres": [
+      [
+        "Eastern",
+        13
+      ],
+      [
+        "Kigali",
+        6
+      ],
+      [
+        "Northern",
+        7
+      ],
+      [
+        "Southern",
+        9
+      ],
+      [
+        "Western",
+        11
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        13
+      ],
+      [
+        "Kigali",
+        6
+      ],
+      [
+        "Northern",
+        7
+      ],
+      [
+        "Southern",
+        9
+      ],
+      [
+        "Western",
+        11
+      ]
+    ],
+    "postgres_total": 46,
+    "neo4j_total": 46,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        37
+      ],
+      [
+        "Kigali",
+        30
+      ],
+      [
+        "Northern",
+        35
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        31
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        37
+      ],
+      [
+        "Kigali",
+        30
+      ],
+      [
+        "Northern",
+        35
+      ],
+      [
+        "Southern",
+        45
+      ],
+      [
+        "Western",
+        31
+      ]
+    ],
+    "postgres_total": 178,
+    "neo4j_total": 178,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        40
+      ],
+      [
+        "Kigali",
+        33
+      ],
+      [
+        "Northern",
+        35
+      ],
+      [
+        "Southern",
+        47
+      ],
+      [
+        "Western",
+        33
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        40
+      ],
+      [
+        "Kigali",
+        33
+      ],
+      [
+        "Northern",
+        35
+      ],
+      [
+        "Southern",
+        47
+      ],
+      [
+        "Western",
+        33
+      ]
+    ],
+    "postgres_total": 188,
+    "neo4j_total": 188,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        45
+      ],
+      [
+        "Kigali",
+        41
+      ],
+      [
+        "Northern",
+        46
+      ],
+      [
+        "Southern",
+        57
+      ],
+      [
+        "Western",
+        39
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        45
+      ],
+      [
+        "Kigali",
+        41
+      ],
+      [
+        "Northern",
+        46
+      ],
+      [
+        "Southern",
+        57
+      ],
+      [
+        "Western",
+        39
+      ]
+    ],
+    "postgres_total": 228,
+    "neo4j_total": 228,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "depth": 4,
+    "postgres": [
+      [
+        "Eastern",
+        23
+      ],
+      [
+        "Kigali",
+        24
+      ],
+      [
+        "Northern",
+        29
+      ],
+      [
+        "Southern",
+        43
+      ],
+      [
+        "Western",
+        27
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        23
+      ],
+      [
+        "Kigali",
+        24
+      ],
+      [
+        "Northern",
+        29
+      ],
+      [
+        "Southern",
+        43
+      ],
+      [
+        "Western",
+        27
+      ]
+    ],
+    "postgres_total": 146,
+    "neo4j_total": 146,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        82
+      ],
+      [
+        "Kigali",
+        90
+      ],
+      [
+        "Northern",
+        97
+      ],
+      [
+        "Southern",
+        121
+      ],
+      [
+        "Western",
+        93
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        82
+      ],
+      [
+        "Kigali",
+        90
+      ],
+      [
+        "Northern",
+        97
+      ],
+      [
+        "Southern",
+        121
+      ],
+      [
+        "Western",
+        93
+      ]
+    ],
+    "postgres_total": 483,
+    "neo4j_total": 483,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        151
+      ],
+      [
+        "Kigali",
+        172
+      ],
+      [
+        "Northern",
+        167
+      ],
+      [
+        "Southern",
+        186
+      ],
+      [
+        "Western",
+        156
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        151
+      ],
+      [
+        "Kigali",
+        172
+      ],
+      [
+        "Northern",
+        167
+      ],
+      [
+        "Southern",
+        186
+      ],
+      [
+        "Western",
+        156
+      ]
+    ],
+    "postgres_total": 832,
+    "neo4j_total": 832,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        278
+      ],
+      [
+        "Kigali",
+        293
+      ],
+      [
+        "Northern",
+        295
+      ],
+      [
+        "Southern",
+        294
+      ],
+      [
+        "Western",
+        273
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        278
+      ],
+      [
+        "Kigali",
+        293
+      ],
+      [
+        "Northern",
+        295
+      ],
+      [
+        "Southern",
+        294
+      ],
+      [
+        "Western",
+        273
+      ]
+    ],
+    "postgres_total": 1433,
+    "neo4j_total": 1433,
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "depth": 4,
+    "postgres": [
+      [
+        "Eastern",
+        2
+      ],
+      [
+        "Northern",
+        1
+      ],
+      [
+        "Western",
+        7
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        2
+      ],
+      [
+        "Northern",
+        1
+      ],
+      [
+        "Western",
+        7
+      ]
+    ],
+    "postgres_total": 10,
+    "neo4j_total": 10,
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        8
+      ],
+      [
+        "Kigali",
+        10
+      ],
+      [
+        "Northern",
+        7
+      ],
+      [
+        "Southern",
+        6
+      ],
+      [
+        "Western",
+        13
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        8
+      ],
+      [
+        "Kigali",
+        10
+      ],
+      [
+        "Northern",
+        7
+      ],
+      [
+        "Southern",
+        6
+      ],
+      [
+        "Western",
+        13
+      ]
+    ],
+    "postgres_total": 44,
+    "neo4j_total": 44,
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        32
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        31
+      ],
+      [
+        "Southern",
+        30
+      ],
+      [
+        "Western",
+        37
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        32
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        31
+      ],
+      [
+        "Southern",
+        30
+      ],
+      [
+        "Western",
+        37
+      ]
+    ],
+    "postgres_total": 180,
+    "neo4j_total": 180,
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        34
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        34
+      ],
+      [
+        "Western",
+        37
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        34
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        34
+      ],
+      [
+        "Western",
+        37
+      ]
+    ],
+    "postgres_total": 192,
+    "neo4j_total": 192,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "depth": 4,
+    "postgres": [
+      [
+        "Eastern",
+        6
+      ],
+      [
+        "Kigali",
+        10
+      ],
+      [
+        "Northern",
+        13
+      ],
+      [
+        "Southern",
+        11
+      ],
+      [
+        "Western",
+        7
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        6
+      ],
+      [
+        "Kigali",
+        10
+      ],
+      [
+        "Northern",
+        13
+      ],
+      [
+        "Southern",
+        11
+      ],
+      [
+        "Western",
+        7
+      ]
+    ],
+    "postgres_total": 47,
+    "neo4j_total": 47,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        30
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        31
+      ],
+      [
+        "Western",
+        35
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        30
+      ],
+      [
+        "Kigali",
+        50
+      ],
+      [
+        "Northern",
+        37
+      ],
+      [
+        "Southern",
+        31
+      ],
+      [
+        "Western",
+        35
+      ]
+    ],
+    "postgres_total": 183,
+    "neo4j_total": 183,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        33
+      ],
+      [
+        "Kigali",
+        52
+      ],
+      [
+        "Northern",
+        40
+      ],
+      [
+        "Southern",
+        33
+      ],
+      [
+        "Western",
+        35
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        33
+      ],
+      [
+        "Kigali",
+        52
+      ],
+      [
+        "Northern",
+        40
+      ],
+      [
+        "Southern",
+        33
+      ],
+      [
+        "Western",
+        35
+      ]
+    ],
+    "postgres_total": 193,
+    "neo4j_total": 193,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        40
+      ],
+      [
+        "Kigali",
+        62
+      ],
+      [
+        "Northern",
+        45
+      ],
+      [
+        "Southern",
+        39
+      ],
+      [
+        "Western",
+        44
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        40
+      ],
+      [
+        "Kigali",
+        62
+      ],
+      [
+        "Northern",
+        45
+      ],
+      [
+        "Southern",
+        39
+      ],
+      [
+        "Western",
+        44
+      ]
+    ],
+    "postgres_total": 230,
+    "neo4j_total": 230,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "depth": 4,
+    "postgres": [
+      [
+        "Eastern",
+        25
+      ],
+      [
+        "Kigali",
+        44
+      ],
+      [
+        "Northern",
+        29
+      ],
+      [
+        "Southern",
+        27
+      ],
+      [
+        "Western",
+        22
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        25
+      ],
+      [
+        "Kigali",
+        44
+      ],
+      [
+        "Northern",
+        29
+      ],
+      [
+        "Southern",
+        27
+      ],
+      [
+        "Western",
+        22
+      ]
+    ],
+    "postgres_total": 147,
+    "neo4j_total": 147,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "depth": 6,
+    "postgres": [
+      [
+        "Eastern",
+        93
+      ],
+      [
+        "Kigali",
+        125
+      ],
+      [
+        "Northern",
+        92
+      ],
+      [
+        "Southern",
+        96
+      ],
+      [
+        "Western",
+        82
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        93
+      ],
+      [
+        "Kigali",
+        125
+      ],
+      [
+        "Northern",
+        92
+      ],
+      [
+        "Southern",
+        96
+      ],
+      [
+        "Western",
+        82
+      ]
+    ],
+    "postgres_total": 488,
+    "neo4j_total": 488,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "depth": 8,
+    "postgres": [
+      [
+        "Eastern",
+        161
+      ],
+      [
+        "Kigali",
+        190
+      ],
+      [
+        "Northern",
+        164
+      ],
+      [
+        "Southern",
+        174
+      ],
+      [
+        "Western",
+        148
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        161
+      ],
+      [
+        "Kigali",
+        190
+      ],
+      [
+        "Northern",
+        164
+      ],
+      [
+        "Southern",
+        174
+      ],
+      [
+        "Western",
+        148
+      ]
+    ],
+    "postgres_total": 837,
+    "neo4j_total": 837,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "depth": 10,
+    "postgres": [
+      [
+        "Eastern",
+        278
+      ],
+      [
+        "Kigali",
+        302
+      ],
+      [
+        "Northern",
+        295
+      ],
+      [
+        "Southern",
+        288
+      ],
+      [
+        "Western",
+        263
+      ]
+    ],
+    "neo4j": [
+      [
+        "Eastern",
+        278
+      ],
+      [
+        "Kigali",
+        302
+      ],
+      [
+        "Northern",
+        295
+      ],
+      [
+        "Southern",
+        288
+      ],
+      [
+        "Western",
+        263
+      ]
+    ],
+    "postgres_total": 1426,
+    "neo4j_total": 1426,
+    "match": true
+  }
+]

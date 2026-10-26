@@ -1,0 +1,44 @@
+[
+  {
+    "set": "A",
+    "account": 998,
+    "postgres_rows": 4,
+    "neo4j_rows": 4,
+    "match": true
+  },
+  {
+    "set": "B",
+    "account": 147228,
+    "postgres_rows": 9,
+    "neo4j_rows": 9,
+    "match": true
+  },
+  {
+    "set": "C",
+    "account": 206978,
+    "postgres_rows": 9,
+    "neo4j_rows": 9,
+    "match": true
+  },
+  {
+    "set": "D",
+    "account": 237998,
+    "postgres_rows": 4,
+    "neo4j_rows": 4,
+    "match": true
+  },
+  {
+    "set": "E",
+    "account": 144228,
+    "postgres_rows": 9,
+    "neo4j_rows": 9,
+    "match": true
+  },
+  {
+    "set": "F",
+    "account": 203978,
+    "postgres_rows": 9,
+    "neo4j_rows": 9,
+    "match": true
+  }
+]

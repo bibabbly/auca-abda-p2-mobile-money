@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.env
+# captured source CSVs and Neo4j import copies stay local (results/*.csv are submitted)
+data/
+import/
+scratch/
+
+# course brief stays local (lecturer's document)
+Project_2_Mobile_Money_Analytics_2026.pdf
+
+# screenshots go in the PDF report, not the public repo
+screenshots/

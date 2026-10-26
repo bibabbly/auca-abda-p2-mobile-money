@@ -1,0 +1,93 @@
+{
+  "counts": {
+    "Customer": {
+      "neo4j": 228000,
+      "expected": 228000,
+      "match": true
+    },
+    "Account": {
+      "neo4j": 248000,
+      "expected": 248000,
+      "match": true
+    },
+    "Device": {
+      "neo4j": 228600,
+      "expected": 228600,
+      "match": true
+    },
+    "OWNS": {
+      "neo4j": 248000,
+      "expected": 248000,
+      "match": true
+    },
+    "USED_DEVICE": {
+      "neo4j": 285600,
+      "expected": 285600,
+      "match": true
+    },
+    "TRANSFER": {
+      "neo4j": 20003300,
+      "expected": 20003300,
+      "match": true
+    },
+    "ALL NODES": {
+      "neo4j": 704600,
+      "expected": 704600,
+      "match": true
+    },
+    "ALL RELATIONSHIPS": {
+      "neo4j": 20536900,
+      "expected": 20536900,
+      "match": true
+    }
+  },
+  "roles": {
+    "person": {
+      "neo4j": 240000,
+      "expected": 240000,
+      "match": true
+    },
+    "merchant": {
+      "neo4j": 6000,
+      "expected": 6000,
+      "match": true
+    },
+    "agent": {
+      "neo4j": 2000,
+      "expected": 2000,
+      "match": true
+    }
+  },
+  "one_owner_per_account": {
+    "violations": 0,
+    "match": true
+  },
+  "unique_transfer_id": {
+    "transfers": 20003300,
+    "distinct": 20003300,
+    "match": true
+  },
+  "audit": {
+    "count": {
+      "neo4j": 20003300,
+      "capture": 20003300,
+      "match": true
+    },
+    "earliest occurred_at": {
+      "neo4j": 1788235200,
+      "capture": 1788235200,
+      "match": true
+    },
+    "latest occurred_at": {
+      "neo4j": 1790798399,
+      "capture": 1790798399,
+      "match": true
+    },
+    "sum amount_rwf": {
+      "neo4j": 231482327870,
+      "capture": 231482327870,
+      "match": true
+    }
+  },
+  "all_ok": true
+}

@@ -1,0 +1,108 @@
+-- pg_Q7-B-b6_bidirectional  params={'account': 147228, 'destination': 186823, 'start': 1789285500, 'end': 1789289100, 'bound': 6}
+
+WITH RECURSIVE fwd(node, depth) AS (
+    SELECT a.account_id, 0 FROM accounts a
+    WHERE a.account_id = %(account)s AND a.role = 'person'
+    UNION
+    SELECT t.receiver_id, f.depth + 1
+    FROM fwd f
+    JOIN transfers t ON t.sender_id = f.node
+    JOIN accounts r  ON r.account_id = t.receiver_id AND r.role = 'person'
+    WHERE f.depth < (%(bound)s + 1) / 2
+), bwd(node, depth) AS (
+    SELECT a.account_id, 0 FROM accounts a
+    WHERE a.account_id = %(destination)s AND a.role = 'person'
+    UNION
+    SELECT t.sender_id, b.depth + 1
+    FROM bwd b
+    JOIN transfers t ON t.receiver_id = b.node
+    JOIN accounts s  ON s.account_id = t.sender_id AND s.role = 'person'
+    WHERE b.depth < %(bound)s / 2
+), f AS (SELECT node, MIN(depth) AS d FROM fwd GROUP BY node),
+   b AS (SELECT node, MIN(depth) AS d FROM bwd GROUP BY node)
+SELECT MIN(f.d + b.d) AS shortest_length
+FROM f JOIN b ON b.node = f.node
+
+====================================================================================================
+Aggregate  (cost=6172.89..6172.90 rows=1 width=4) (actual time=209.160..209.173 rows=1.00 loops=1)
+  Buffers: shared hit=111730
+  CTE fwd
+    ->  Recursive Union  (cost=0.42..1732.85 rows=3111 width=8) (actual time=0.035..91.817 rows=2216.00 loops=1)
+          Storage: Memory  Maximum Storage: 101kB
+          Buffers: shared hit=59812
+          ->  Index Scan using accounts_pk on accounts a  (cost=0.42..8.44 rows=1 width=8) (actual time=0.029..0.031 rows=1.00 loops=1)
+                Index Cond: (account_id = 147228)
+                Filter: (role = 'person'::text)
+                Index Searches: 1
+                Buffers: shared hit=4
+          ->  Nested Loop  (cost=0.98..169.33 rows=311 width=8) (actual time=0.114..21.329 rows=2530.50 loops=4)
+                Buffers: shared hit=59808
+                ->  Nested Loop  (cost=0.56..26.74 rows=322 width=8) (actual time=0.105..3.018 rows=3627.00 loops=4)
+                      Buffers: shared hit=1776
+                      ->  WorkTable Scan on fwd f  (cost=0.00..0.22 rows=3 width=8) (actual time=0.089..0.106 rows=47.00 loops=4)
+                            Filter: (depth < 3)
+                            Rows Removed by Filter: 507
+                      ->  Index Only Scan using transfers_sender_time_idx on transfers t  (cost=0.56..7.77 rows=107 width=8) (actual time=0.014..0.042 rows=77.17 loops=188)
+                            Index Cond: (sender_id = f.node)
+                            Heap Fetches: 0
+                            Index Searches: 188
+                            Buffers: shared hit=1776
+                ->  Index Scan using accounts_pk on accounts r  (cost=0.42..0.44 rows=1 width=4) (actual time=0.004..0.004 rows=0.70 loops=14508)
+                      Index Cond: (account_id = t.receiver_id)
+                      Filter: (role = 'person'::text)
+                      Rows Removed by Filter: 0
+                      Index Searches: 14508
+                      Buffers: shared hit=58032
+  CTE bwd
+    ->  Recursive Union  (cost=0.42..4156.70 rows=7741 width=8) (actual time=0.021..103.881 rows=2560.00 loops=1)
+          Storage: Memory  Maximum Storage: 128kB
+          Buffers: shared hit=51918
+          ->  Index Scan using accounts_pk on accounts a_1  (cost=0.42..8.44 rows=1 width=8) (actual time=0.018..0.019 rows=1.00 loops=1)
+                Index Cond: (account_id = 186823)
+                Filter: (role = 'person'::text)
+                Index Searches: 1
+                Buffers: shared hit=4
+          ->  Nested Loop  (cost=0.98..407.09 rows=774 width=8) (actual time=0.145..23.887 rows=2809.75 loops=4)
+                Buffers: shared hit=51914
+                ->  Nested Loop  (cost=0.56..51.94 rows=802 width=8) (actual time=0.134..4.201 rows=3120.75 loops=4)
+                      Buffers: shared hit=1982
+                      ->  WorkTable Scan on bwd b_1  (cost=0.00..0.22 rows=3 width=8) (actual time=0.100..0.128 rows=52.50 loops=4)
+                            Filter: (depth < 3)
+                            Rows Removed by Filter: 588
+                      ->  Index Only Scan using transfers_receiver_time_idx on transfers t_1  (cost=0.56..14.57 rows=267 width=8) (actual time=0.028..0.059 rows=59.44 loops=210)
+                            Index Cond: (receiver_id = b_1.node)
+                            Heap Fetches: 0
+                            Index Searches: 210
+                            Buffers: shared hit=1982
+                ->  Index Scan using accounts_pk on accounts s  (cost=0.42..0.44 rows=1 width=4) (actual time=0.005..0.005 rows=0.90 loops=12483)
+                      Index Cond: (account_id = t_1.sender_id)
+                      Filter: (role = 'person'::text)
+                      Rows Removed by Filter: 0
+                      Index Searches: 12483
+                      Buffers: shared hit=49932
+  ->  Hash Join  (cost=277.80..282.34 rows=200 width=8) (actual time=207.839..209.153 rows=22.00 loops=1)
+        Hash Cond: (fwd.node = b.node)
+        Buffers: shared hit=111730
+        ->  HashAggregate  (cost=77.78..79.78 rows=200 width=8) (actual time=95.801..96.637 rows=2101.00 loops=1)
+              Group Key: fwd.node
+              Batches: 1  Memory Usage: 233kB
+              Buffers: shared hit=59812
+              ->  CTE Scan on fwd  (cost=0.00..62.22 rows=3111 width=8) (actual time=0.037..93.407 rows=2216.00 loops=1)
+                    Storage: Memory  Maximum Storage: 102kB
+                    Buffers: shared hit=59812
+        ->  Hash  (cost=197.52..197.52 rows=200 width=8) (actual time=111.982..111.984 rows=2434.00 loops=1)
+              Buckets: 4096 (originally 1024)  Batches: 1 (originally 1)  Memory Usage: 128kB
+              Buffers: shared hit=51918
+              ->  Subquery Scan on b  (cost=193.52..197.52 rows=200 width=8) (actual time=109.461..111.017 rows=2434.00 loops=1)
+                    Buffers: shared hit=51918
+                    ->  HashAggregate  (cost=193.52..195.52 rows=200 width=8) (actual time=109.453..110.421 rows=2434.00 loops=1)
+                          Group Key: bwd.node
+                          Batches: 1  Memory Usage: 233kB
+                          Buffers: shared hit=51918
+                          ->  CTE Scan on bwd  (cost=0.00..154.82 rows=7741 width=8) (actual time=0.023..106.120 rows=2560.00 loops=1)
+                                Storage: Memory  Maximum Storage: 113kB
+                                Buffers: shared hit=51918
+Planning:
+  Buffers: shared hit=36
+Planning Time: 2.193 ms
+Execution Time: 210.269 ms
